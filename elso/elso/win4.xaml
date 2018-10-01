@@ -1,0 +1,10 @@
+﻿<Window x:Class="elso.win4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="win4" Height="477" Width="830">
+    <Grid>
+        <Button Content="vissza" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="348,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Keresés" HorizontalAlignment="Left" Margin="284,0,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
