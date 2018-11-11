@@ -21,12 +21,18 @@ namespace elso
     /// </summary>
     public partial class Window1 : Window
     {
+        private User currUser;
+
+
         public Window1()
         {
             InitializeComponent();
+            User.InitializeDB();
             
         }
         
+
+
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,10 +44,21 @@ namespace elso
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!this.tbox1.Text.Contains('@') || !this.tbox1.Text.Contains('.'))
+            if (!this.email.Text.Contains('@') || !this.email.Text.Contains('.'))
             {
-                tbox1.Text = "Hibás e-mail.";
+                email.Text = "Hibás e-mail.";
             }
+
+            String un = username.Text;
+
+            String ps = password.Text;
+
+            String em = email.Text;
+
+            currUser = User.Insert(un, ps, em);
+
+            MessageBox.Show("Sikeres Regisztráció!");
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

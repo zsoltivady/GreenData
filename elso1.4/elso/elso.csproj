@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="User.cs" />
     <Compile Include="kepkeres.xaml.cs">
       <DependentUpon>kepkeres.xaml</DependentUpon>
     </Compile>

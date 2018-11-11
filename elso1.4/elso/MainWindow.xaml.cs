@@ -24,12 +24,15 @@ namespace elso
     /// </summary>
     public partial class MainWindow : Window
     {
+        private User currUser;
+
         string connectionString = @"Server=localhost;Database=kepszerkeszto_db;Uid=root;Pwd='';";
 
 
         public MainWindow()
         {
             InitializeComponent();
+            User.InitializeDB();
         }
         public static int bejelentkezve = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -47,6 +50,9 @@ namespace elso
             this.Close();
         }
 
+
+
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             string un = textb1.Text;
@@ -55,9 +61,12 @@ namespace elso
             if (string.IsNullOrEmpty(un) || string.IsNullOrEmpty(pw))
             {
                 MessageBox.Show("Minden mező kitöltése kötelező!");
+                textb1.Clear();
+                textb3.Clear();
             }
             else
             {
+
 
                 MySqlConnection conn = new MySqlConnection(connectionString);
                 MySqlDataAdapter sda = new MySqlDataAdapter("SELECT count(*) FROM users WHERE username='" + un + "'AND password='" + pw + "'", conn);
