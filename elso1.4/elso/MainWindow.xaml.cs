@@ -24,6 +24,9 @@ namespace elso
     /// </summary>
     public partial class MainWindow : Window
     {
+        string connectionString = @"Server=localhost;Database=kepszerkeszto_db;Uid=root;Pwd='';";
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,11 +49,43 @@ namespace elso
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            string connectionstring = "SERVER=localhost;DATABASE=dtbuser;UID=root;PASSWORD=root;";
-            MySqlConnection connection = new MySqlConnection(connectionstring);
-            connection.Open();
-            MySqlCommand cmd = new MySqlCommand("", connection);
-            connection.Close();
+            string un = textb1.Text;
+            string pw = textb3.Password.ToString();
+
+            if (string.IsNullOrEmpty(un) || string.IsNullOrEmpty(pw))
+            {
+                MessageBox.Show("Minden mező kitöltése kötelező!");
+            }
+            else
+            {
+
+                MySqlConnection conn = new MySqlConnection(connectionString);
+                MySqlDataAdapter sda = new MySqlDataAdapter("SELECT count(*) FROM users WHERE username='" + un + "'AND password='" + pw + "'", conn);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+                    MessageBox.Show("Sikeres Bejelentkezés!");
+
+                    win3 w3 = new win3();
+
+                    w3.Show();
+
+                    this.Close();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Hibásan megadott adatok!");
+
+                    textb1.Clear();
+                    textb3.Clear();
+                }
+            }
+
+
+
         }
     }
 }
