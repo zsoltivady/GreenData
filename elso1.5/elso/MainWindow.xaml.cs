@@ -30,6 +30,7 @@ namespace elso
         public MainWindow()
         {
             InitializeComponent();
+            User.InitializeDB();
         }
         public static int bejelentkezve = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,6 +56,8 @@ namespace elso
             if (string.IsNullOrEmpty(un) || string.IsNullOrEmpty(pw))
             {
                 MessageBox.Show("Minden mező kitöltése kötelező!");
+                textb1.Clear();
+                textb3.Clear();
             }
             else
             {

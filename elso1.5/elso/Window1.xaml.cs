@@ -21,9 +21,12 @@ namespace elso
     /// </summary>
     public partial class Window1 : Window
     {
+        private User currUser;
+
         public Window1()
         {
             InitializeComponent();
+            User.InitializeDB();
             
         }
         
@@ -38,10 +41,7 @@ namespace elso
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!this.tbox1.Text.Contains('@') || !this.tbox1.Text.Contains('.'))
-            {
-                tbox1.Text = "Hibás e-mail.";
-            }
+            
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -63,6 +63,24 @@ namespace elso
             string email = "Az email címed add meg itt.";
             email = email.Replace(",", "," + System.Environment.NewLine);
             label1.Content = email;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (!this.email.Text.Contains('@') || !this.email.Text.Contains('.'))
+            {
+                email.Text = "Hibás e-mail.";
+            }
+
+            String un = username.Text;
+
+            String ps = password.Text;
+
+            String em = email.Text;
+
+            currUser = User.Insert(un, ps, em);
+
+            MessageBox.Show("Sikeres Regisztráció!");
         }
     }
 }

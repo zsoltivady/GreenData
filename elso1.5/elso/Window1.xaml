@@ -12,21 +12,21 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" Margin="5,0,10,10">
                 <Label Width="100" Height="30" HorizontalAlignment="Left" Margin="30,0,0,10" Content="Felhasználónév" Foreground="White"/>
-                <TextBox Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" TextChanged="TextBox_TextChanged"/>
+                <TextBox x:Name="username" Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" TextChanged="TextBox_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" Margin="5,0,10,10">
                 <Label Width="100" Height="30" HorizontalAlignment="Left" Margin="30,0,0,10" Content="Jelszó" Foreground="White"/>
-                <TextBox Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" TextChanged="TextBox_TextChanged_1"/>
+                <TextBox x:Name="password" Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" TextChanged="TextBox_TextChanged_1"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" Margin="5,0,10,10">
                 <Label Width="100" Height="30" HorizontalAlignment="Left" Margin="30,0,0,10" Content="Jelszó" Foreground="White"/>
-                <TextBox Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" TextChanged="TextBox_TextChanged_1"/>
+                <TextBox x:Name="password1" Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" TextChanged="TextBox_TextChanged_1"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" Margin="5,0,10,10">
                 <Label Width="100" Height="30" HorizontalAlignment="Left" Margin="30,0,0,10" Content="E-mail" Foreground="White"/>
-                <TextBox Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" Name="tbox1" TextChanged="tbox1_TextChanged"/>
+                <TextBox Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" x:Name="email" TextChanged="tbox1_TextChanged"/>
             </StackPanel>
-            <Button HorizontalAlignment="Center" Height="30" Width="70" Content="Regisztráció" Margin="10" Background="Gray" Foreground="White"></Button>
+            <Button HorizontalAlignment="Center" Height="30" Width="70" Content="Regisztráció" Margin="10" Background="Gray" Foreground="White" Click="Button_Click_2"></Button>
         </StackPanel>
     </Border>
 </Window>

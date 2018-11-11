@@ -57,6 +57,7 @@
     <Compile Include="kepkeres.xaml.cs">
       <DependentUpon>kepkeres.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="win3.xaml.cs">
       <DependentUpon>win3.xaml</DependentUpon>
     </Compile>
