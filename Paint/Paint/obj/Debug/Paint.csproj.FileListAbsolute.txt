@@ -27,14 +27,12 @@ C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\bin\Debug\WriteableBitmapEx
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\bin\Debug\WriteableBitmapEx.Wpf.xml
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\MainWindow.g.cs
-C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\App.g.cs
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint_MarkupCompile.cache
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint_MarkupCompile.lref
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\MainWindow.baml
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.g.resources
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.Properties.Resources.resources
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.csproj.GenerateResource.cache
-C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.csproj.CoreCompileInputs.cache
-C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.csproj.CopyComplete
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.exe
 C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.pdb
+C:\Users\user\Documents\GitHub\GreenData\Paint\Paint\obj\Debug\Paint.g.cs

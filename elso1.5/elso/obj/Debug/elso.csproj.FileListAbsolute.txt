@@ -223,7 +223,6 @@ C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\elso.exe
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\elso.pdb
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\bin\Debug\elso.exe
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\bin\Debug\elso.pdb
-C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\bin\Debug\MySql.Data.xml
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\elso.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\MainWindow.baml
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\win3.baml
@@ -241,3 +240,9 @@ C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\kepkeres.baml
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\elso.g.resources
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\elso.Properties.Resources.resources
 C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\elso.csproj.GenerateResource.Cache
+C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\bin\Debug\WriteableBitmapEx.Wpf.dll
+C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\bin\Debug\WriteableBitmapEx.Wpf.pdb
+C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\bin\Debug\WriteableBitmapEx.Wpf.xml
+C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\Paint.g.cs
+C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\bin\Debug\ColorPickerWPF.dll
+C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\obj\Debug\Paint.baml
