@@ -1,0 +1,15 @@
+﻿<Window x:Class="elso.kepkeres"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:elso"
+        mc:Ignorable="d"
+        Title="Keresés" Height="124.136" Width="339.091" Background="#0A5581" FontSize="14" WindowStartupLocation="CenterScreen">
+    <Border Background="#0D1920" CornerRadius="20" Margin="5">
+        <StackPanel>
+            <TextBox Width="200" Margin="10"></TextBox>
+            <Button Height="25" Width="70" Content="Keresés" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center"></Button>
+        </StackPanel>
+    </Border>
+</Window>
