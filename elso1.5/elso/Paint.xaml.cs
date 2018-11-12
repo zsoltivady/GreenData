@@ -88,5 +88,28 @@ namespace elso
             green.Value = colors.G;
             blue.Value = colors.B;
         }
+
+        private void save_Click(object sender, RoutedEventArgs e)
+        {
+            Rect bounds = VisualTreeHelper.GetDescendantBounds(rajz);
+            double dpi = 96d;
+
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, dpi, dpi, System.Windows.Media.PixelFormats.Default);
+            DrawingVisual dv = new DrawingVisual();
+            using (DrawingContext dc = dv.RenderOpen())
+            {
+                VisualBrush vb = new VisualBrush(rajz);
+                dc.DrawRectangle(vb, null, new Rect(new Point(), bounds.Size));
+            }
+            rtb.Render(dv);
+
+            BitmapEncoder pngEncoder = new PngBitmapEncoder();
+            pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            {
+                pngEncoder.Save(ms);
+                System.IO.File.WriteAllBytes(@"C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\Pictures\teszt.jpg", ms.ToArray());
+            }
+        }
     }
 }

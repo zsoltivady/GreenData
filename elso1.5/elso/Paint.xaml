@@ -19,6 +19,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="100" Margin="100,0,0,0">
             <Button x:Name="select" Content="Kijelölés" Width="75" Click="select_Click"/>
             <Button x:Name="edit" Content="Szerkesztés" Width="75" Click="edit_Click"/>
+            <Button x:Name="save" Content="Mentés" Width="75" Click="save_Click"/>
         </StackPanel>
     </Grid>
 </Window>
