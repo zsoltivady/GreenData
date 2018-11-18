@@ -10,11 +10,12 @@ namespace elso
 {
     class User
     {
+
         private const String SERVER = "localhost";
         private const String DATABASE = "kepszerkeszto_db";
         private const String UID = "root";
         private const String PASSWORD = "";
-        private static MySqlConnection dbConn;
+        private static MySqlConnection dbConn = Database.DBConnection.GetdbConn();
 
         public int Id
         {
@@ -34,6 +35,7 @@ namespace elso
         {
             get;
 
+
             private set;
         }
 
@@ -52,30 +54,6 @@ namespace elso
             Email = email;
         }
 
-        public static void InitializeDB()
-        {
-            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-
-            builder.Server = SERVER;
-
-            builder.UserID = UID;
-
-            builder.Password = PASSWORD;
-
-            builder.Database = DATABASE;
-
-            String connString = builder.ToString();
-
-            builder = null;
-
-            Console.WriteLine(connString);
-
-            dbConn = new MySqlConnection(connString);
-
-            MySqlConnection conn = new MySqlConnection(connString);
-
-        }
-
         public static User Insert(String u, String p, String email)
         {
             String query = String.Format("INSERT INTO users(username, password, email) VALUES ('{0}', '{1}', '{2}')", u, p, email);
@@ -83,7 +61,6 @@ namespace elso
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
             dbConn.Open();
-
 
             cmd.ExecuteNonQuery();
 
@@ -93,10 +70,23 @@ namespace elso
 
             dbConn.Close();
 
-
-
             return user;
         }
+
+        public void Update(String u, String p, String email)
+        {
+            String query = string.Format("UPDATE users SET username='{0}', password='{1}', email='{2}', WHERE ID={3}", u, p, email, Id);
+
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+
+            dbConn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            dbConn.Close();
+
+        }
+
 
 
     }

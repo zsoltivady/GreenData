@@ -23,7 +23,6 @@ namespace elso
         public win3()
         {
             InitializeComponent();
-            User.InitializeDB();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

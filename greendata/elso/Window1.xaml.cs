@@ -26,8 +26,7 @@ namespace elso
         public Window1()
         {
             InitializeComponent();
-            User.InitializeDB();
-            
+            Database.DBConnection.InitializeDB();
         }
         
 
