@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="greendrawModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="greendrawEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="User" EntityType="greendrawModel.User" />
+    <EntitySet Name="LoginLog" EntityType="greendrawModel.LoginLog" />
+    <AssociationSet Name="userLoginLog" Association="greendrawModel.userLoginLog">
+      <End Role="user" EntitySet="User" />
+      <End Role="LoginLog" EntitySet="LoginLog" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" />
+    <Property Name="Password" Type="Binary" Nullable="false" a:SetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" MaxLength="50" FixedLength="false" />
+    <Property Name="Password2" Type="Binary" Nullable="false" FixedLength="false" MaxLength="50" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <NavigationProperty Name="LoginLog" Relationship="greendrawModel.userLoginLog" FromRole="user" ToRole="LoginLog" />
+  </EntityType>
+  <EntityType Name="LoginLog">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="true" />
+    <NavigationProperty Name="user" Relationship="greendrawModel.userLoginLog" FromRole="LoginLog" ToRole="user" />
+  </EntityType>
+  <Association Name="userLoginLog">
+    <End Type="greendrawModel.User" Role="user" Multiplicity="1" />
+    <End Type="greendrawModel.LoginLog" Role="LoginLog" Multiplicity="*" />
+  </Association>
+</Schema>
