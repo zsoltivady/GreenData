@@ -80,6 +80,7 @@ namespace GreenDraw
                     _doLogin = new RelayCommand(
                         p => true,
                         p => this.Login());
+                   
                 }
                 return _doLogin;
             }
@@ -269,9 +270,6 @@ namespace GreenDraw
             {
                 _isValid = true;
             }
-
-
-
 
         }
 

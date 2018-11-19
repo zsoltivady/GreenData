@@ -74,3 +74,4 @@ C:\Users\Drumoti\Documents\github\greendata\GreenData\GreenDraw\elso\obj\Debug\G
 C:\Users\Drumoti\Documents\github\greendata\GreenData\GreenDraw\elso\bin\Debug\GreenDraw.exe.config
 C:\Users\Drumoti\Documents\github\greendata\GreenData\GreenDraw\elso\bin\Debug\GreenDraw.exe
 C:\Users\Drumoti\Documents\github\greendata\GreenData\GreenDraw\elso\bin\Debug\GreenDraw.pdb
+C:\Users\Drumoti\Documents\github\greendata\GreenData\GreenDraw\elso\obj\Debug\GeneratedInternalTypeHelper.g.cs

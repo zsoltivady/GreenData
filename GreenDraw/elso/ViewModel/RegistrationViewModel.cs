@@ -85,6 +85,30 @@ namespace GreenDraw.ViewModel
             }
         }
 
+        private ICommand _backToLogin;
+        public ICommand ShowLogin
+        {
+            get
+            {
+                if (_backToLogin == null)
+                {
+                    _backToLogin = new RelayCommand(
+                        p => true,
+                        p => ShowLoginWindow(p));
+                }
+                return _backToLogin;
+            }
+        }
+
+        void ShowLoginWindow(object obj)
+        {
+            new GreenDraw.View.Login().Show();
+            //TODO:ha szeretném hogy bezárjuk a küldő ablakot
+            Window win = obj as Window;
+            win.Close();
+        }
+
+
         private ICommand _doRegistration;
         public ICommand DoRegistration
         {
@@ -132,7 +156,9 @@ namespace GreenDraw.ViewModel
 
         public bool HasUserName(string username)
         {
-            var hasuser = db.User.Any(u => u.UserName.ToLower() == username.ToLower());
+
+            //var hasuser = db.User.Any(u => u.UserName.ToLower() == username.ToLower());
+            var hasuser = db.User.Any(u => u.UserName == username);
             return hasuser;
         }
 
@@ -259,9 +285,6 @@ namespace GreenDraw.ViewModel
             {
                 _isValid = true;
             }
-
-
-
 
         }
 

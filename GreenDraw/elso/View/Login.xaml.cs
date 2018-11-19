@@ -47,7 +47,7 @@ namespace GreenDraw.View
             Choose valasztasWindow = new Choose();
             valasztasWindow.Show();
             this.Close();
-            MessageBox.Show("Üdvözöllek kedves vendég!");
+            
         }
 
         private void Login_Button(object sender, RoutedEventArgs e)

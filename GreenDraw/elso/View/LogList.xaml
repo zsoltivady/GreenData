@@ -11,14 +11,14 @@
 
     <Grid>
         <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding LogList}" />
-        <!--<DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LogList}">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding LogList}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding DateTime}"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding User.UserId}"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding User.UserName}"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding User.FirstName}"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding User.LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding User.Password}"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding User.Email}"></DataGridTextColumn>
             </DataGrid.Columns>
-        </DataGrid>-->
+        </DataGrid>
     </Grid>
 </Window>
