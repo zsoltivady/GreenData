@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenDraw"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="GreenDraw" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Width="100" Margin="0,5,0,0" RenderTransformOrigin="0.5,0.5">
             <Slider x:Name="red" ValueChanged="red_ValueChanged" Background="Red" Maximum="255" SmallChange="1"/>
@@ -20,6 +20,7 @@
             <Button x:Name="select" Content="Kijelölés" Width="75" Click="select_Click"/>
             <Button x:Name="edit" Content="Szerkesztés" Width="75" Click="edit_Click"/>
             <Button x:Name="save" Content="Mentés" Width="75" Click="save_Click"/>
+            <Button x:Name="button" Content="Megnyitás" Width="75" Click="open_Click"/>
         </StackPanel>
     </Grid>
 </Window>

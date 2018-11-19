@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,12 +8,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ColorPickerWPF;
+using Microsoft.Win32;
 
 namespace GreenDraw.View
 {
@@ -91,24 +94,39 @@ namespace GreenDraw.View
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            Rect bounds = VisualTreeHelper.GetDescendantBounds(rajz);
-            double dpi = 96d;
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.FileName = "*"; // Default file name
+            dlg.DefaultExt = ".bmp"; // Default file extension
+            dlg.Filter = "bmp fájl (.bmp)|*.bmp"; // Filter files by extension
+            bool? result = dlg.ShowDialog();
 
-            RenderTargetBitmap rtb = new RenderTargetBitmap((int)bounds.Width, (int)bounds.Height, dpi, dpi, System.Windows.Media.PixelFormats.Default);
-            DrawingVisual dv = new DrawingVisual();
-            using (DrawingContext dc = dv.RenderOpen())
+            if (result == true)
             {
-                VisualBrush vb = new VisualBrush(rajz);
-                dc.DrawRectangle(vb, null, new Rect(new Point(), bounds.Size));
+                // Save document
+                string filename = dlg.FileName;
+                //get the dimensions of the ink control
+                int margin = (int)rajz.Margin.Left;
+                int width = (int)rajz.ActualWidth - margin-1;
+                int height = (int)rajz.ActualHeight - margin-1;
+                //render ink to bitmap
+                RenderTargetBitmap rtb = new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
+                rtb.Render(rajz);
+                using (FileStream fs = new FileStream(filename,FileMode.Create))
+                {
+                    BmpBitmapEncoder encoder = new BmpBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(rtb));
+                    encoder.Save(fs);
+                }
             }
-            rtb.Render(dv);
-
-            BitmapEncoder pngEncoder = new PngBitmapEncoder();
-            pngEncoder.Frames.Add(BitmapFrame.Create(rtb));
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+        }
+        private void open_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == true)
             {
-                pngEncoder.Save(ms);
-                System.IO.File.WriteAllBytes(@"C:\Users\user\Documents\GitHub\GreenData\elso1.5\elso\Pictures\teszt.jpg", ms.ToArray());
+                Image i = new Image();
+                i.Source = new BitmapImage(new Uri(ofd.FileName));
+                rajz.Children.Add(i);
             }
         }
     }
