@@ -106,8 +106,8 @@ namespace GreenDraw.View
                 string filename = dlg.FileName;
                 //get the dimensions of the ink control
                 int margin = (int)rajz.Margin.Left;
-                int width = (int)rajz.ActualWidth - margin-1;
-                int height = (int)rajz.ActualHeight - margin-1;
+                int width = (int)rajz.ActualWidth;
+                int height = (int)rajz.ActualHeight;
                 //render ink to bitmap
                 RenderTargetBitmap rtb = new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
                 rtb.Render(rajz);
@@ -124,10 +124,22 @@ namespace GreenDraw.View
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == true)
             {
+                rajz.Strokes.Clear();
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri(ofd.FileName));
                 rajz.Children.Add(i);
             }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            rajz.Strokes.Clear();
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            rajz.Height = paint.Height - 40;
+            rajz.Width = paint.Width - 16;
         }
     }
 }
