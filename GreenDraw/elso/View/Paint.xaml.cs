@@ -26,21 +26,12 @@ namespace GreenDraw.View
     {
         public bool ok;
         public Color colors;
-        public byte piros = 0;
-        public byte zold = 0;
-        public byte kek = 0;
+        public byte piros, zold, kek = 0;
         public Paint()
         {
             InitializeComponent();
             rajz.UseCustomCursor = true;
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
         private void red_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             piros = (byte)red.Value;
@@ -64,15 +55,9 @@ namespace GreenDraw.View
 
         private void rajz_MouseEnter(object sender, MouseEventArgs e)
         {
-            if (ok)
-            {
-                rajz.DefaultDrawingAttributes.Color = colors;
-            }
-            else
-            {
-                rajz.DefaultDrawingAttributes.Color = Color.FromRgb(piros, zold, kek);
-            }
+            rajz.DefaultDrawingAttributes.Color = ok ? colors : Color.FromRgb(piros, zold, kek);
         }
+
         private void select_Click(object sender, RoutedEventArgs e)
         {
             rajz.EditingMode = InkCanvasEditingMode.Select;
@@ -105,7 +90,6 @@ namespace GreenDraw.View
                 // Save document
                 string filename = dlg.FileName;
                 //get the dimensions of the ink control
-                int margin = (int)rajz.Margin.Left;
                 int width = (int)rajz.ActualWidth;
                 int height = (int)rajz.ActualHeight;
                 //render ink to bitmap
@@ -130,12 +114,10 @@ namespace GreenDraw.View
                 rajz.Children.Add(i);
             }
         }
-
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             rajz.Strokes.Clear();
         }
-
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             rajz.Height = paint.Height - 40;
