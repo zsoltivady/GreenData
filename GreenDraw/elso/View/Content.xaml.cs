@@ -62,7 +62,10 @@ namespace GreenDraw.View
         private void cmentes(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true) ;
+            if (saveFileDialog.ShowDialog() == true)
+            {
+
+            }
         }
         private void ckilep(object sender, RoutedEventArgs e)
         {

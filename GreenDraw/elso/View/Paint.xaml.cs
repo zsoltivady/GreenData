@@ -120,7 +120,7 @@ namespace GreenDraw.View
         }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            rajz.Height = paint.Height - 40;
+            rajz.Height = paint.Height - 139;
             rajz.Width = paint.Width - 16;
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GreenDraw"
         mc:Ignorable="d"
-        Title="GreenDraw" Height="450" Width="800" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+        Title="GreenDraw" Height="450" Width="800" SizeChanged="Window_SizeChanged">
     <Grid>
         <InkCanvas x:Name="rajz" MouseEnter="rajz_MouseEnter" Cursor="Pen" HorizontalAlignment="Right" VerticalAlignment="Top" Width="692" Height="319"/>
         <StackPanel Background="Gray" HorizontalAlignment="Left" Width="100" Margin="0,5,100,0" RenderTransformOrigin="0.5,0.5">
