@@ -23,6 +23,10 @@ namespace elso
         public win3()
         {
             InitializeComponent();
+            if (User.IsLoggedIn())
+            {
+                back_button.IsEnabled = false;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,6 +41,20 @@ namespace elso
             win4 sw = new win4();
             sw.Show();
             this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+           
+            MainWindow sw = new MainWindow();
+            sw.Show();
+            this.Close();
+
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

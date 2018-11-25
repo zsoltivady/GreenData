@@ -28,8 +28,10 @@ namespace elso
         public MainWindow()
         {
             InitializeComponent();
+            Database.DBConnection.InitializeDB();
         }
-        public static int bejelentkezve = 0;
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Window1 sw = new Window1();
@@ -58,21 +60,13 @@ namespace elso
             else
             {
 
-                MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-                MySqlDataAdapter sda = new MySqlDataAdapter("SELECT count(*) FROM users WHERE username='" + un + "'AND password='" + pw + "'", conn);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                if (dt.Rows[0][0].ToString() == "1")
+                if (User.UserLogin(un, pw))
                 {
-                    MessageBox.Show("Sikeres Bejelentkezés!");
-
                     win3 w3 = new win3();
 
                     w3.Show();
 
                     this.Close();
-
-
                 }
                 else
                 {
@@ -81,6 +75,7 @@ namespace elso
                     textb1.Clear();
                     textb3.Clear();
                 }
+
             }
 
 

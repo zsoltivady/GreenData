@@ -4,10 +4,10 @@
         Title="Választás" Height="240" Width="330" WindowStartupLocation="CenterScreen" Background="DarkSlateGray">
     <Border Margin="10" Background="Black" CornerRadius="20">
         <StackPanel>
-            <Button HorizontalAlignment="Center" Width="50" Height="20" Content="Vissza" Margin="20"></Button>
+            <Button x:Name="back_button" HorizontalAlignment="Center" Width="50" Height="20" Content="Vissza" Margin="20" Click="Button_Click_2"></Button>
             <StackPanel Orientation="Horizontal">
                 <Border Margin="10" Background="LawnGreen" CornerRadius="60">
-                    <Button Width="90" Height="60" Margin="20" Content="Képszerkesztő" HorizontalAlignment="left" Background="LawnGreen" BorderThickness="0"></Button>
+                    <Button Width="90" Height="60" Margin="20" Content="Képszerkesztő" HorizontalAlignment="left" Background="LawnGreen" BorderThickness="0" Click="Button_Click_3"></Button>
                 </Border>
                 <Border Margin="10" Background="LightBlue" CornerRadius="60">
                     <Button Width="90" Height="60" Margin="20" Content="A Közös" HorizontalAlignment="Right" Background="LightBlue" BorderThickness="0" Click="Button_Click_1"></Button>

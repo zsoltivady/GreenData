@@ -25,15 +25,16 @@ namespace elso
         public win4()
         {
             InitializeComponent();
-            if (MainWindow.bejelentkezve == 1)
+            if (User.IsLoggedIn()) // BEJELENTKEZETT FELHASZNÁLÓNÁL
             {
                 bejelentkez.IsEnabled = false;
                 regisztal.IsEnabled = false;
                 fiokbeall.IsEnabled = true;
                 kijelent.IsEnabled = true;
+
                     
             }
-            else
+            else // VENDÉG FELHASZNÁLÓNÁL 
             {
                 bejelentkez.IsEnabled = true;
                 regisztal.IsEnabled = true;
@@ -94,6 +95,15 @@ namespace elso
         }
         private void ckijelent(object sender, RoutedEventArgs e)
         {
+            User.UserLogout();
+
+            MessageBox.Show("Sikeres Kijelentkezés!");
+
+            MainWindow sw = new MainWindow();
+
+            this.Close();
+
+            sw.Show();
 
         }
         private void celfogadasravarokepek(object sender, RoutedEventArgs e)
