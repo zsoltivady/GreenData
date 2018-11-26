@@ -16,11 +16,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" Margin="5,0,10,10">
                 <Label Width="100" Height="30" HorizontalAlignment="Left" Margin="30,0,0,10" Content="Jelszó" Foreground="White"/>
-                <PasswordBox x:Name="password" Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" />
+                <PasswordBox x:Name="password1" Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" MaxLength="16" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" Margin="5,0,10,10">
                 <Label Width="100" Height="30" HorizontalAlignment="Left" Margin="30,0,0,10" Content="Jelszó" Foreground="White"/>
-                <PasswordBox x:Name="password1" Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" PasswordChanged="Button_Click_1"/>
+                <PasswordBox x:Name="password2" Width="250" Height="20" HorizontalAlignment="Left" Margin="60,0,0,0" MaxLength="16" PasswordChanged="Button_Click_1"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="30" Margin="5,0,10,10">
                 <Label Width="100" Height="30" HorizontalAlignment="Left" Margin="30,0,0,10" Content="E-mail" Foreground="White"/>
