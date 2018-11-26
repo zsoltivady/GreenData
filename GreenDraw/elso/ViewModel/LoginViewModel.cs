@@ -158,10 +158,10 @@ namespace GreenDraw
         }
 
 
-        public string Error
-        {
-            get;
-        }
+        //public string Error
+        //{
+        //    get;
+        //}
 
         Dictionary<string, string> _errors = new Dictionary<string, string>();
 
