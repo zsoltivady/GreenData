@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 using ColorPickerWPF;
 using Microsoft.Win32;
 
-namespace GreenDraw.View
+namespace elso
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -61,11 +61,13 @@ namespace GreenDraw.View
         private void select_Click(object sender, RoutedEventArgs e)
         {
             rajz.EditingMode = InkCanvasEditingMode.Select;
+            rajz.Cursor = Cursors.Cross;
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
             rajz.EditingMode = InkCanvasEditingMode.Ink;
+            rajz.Cursor = Cursors.Pen;
         }
 
         private void colorbox_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -80,40 +82,64 @@ namespace GreenDraw.View
         private void save_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.FileName = "*"; // Default file name
-            dlg.DefaultExt = ".bmp"; // Default file extension
-            dlg.Filter = "bmp fájl (.bmp)|*.bmp"; // Filter files by extension
+            dlg.Filter = "jpg fájl (.jpg)|*.jpg |png fájl (.png) |*.png |GreenData fájl (.gdf) |*.gdf"; // Filter files by extension
+            dlg.InitialDirectory = Environment.CurrentDirectory + @"\Pictures";
             bool? result = dlg.ShowDialog();
-
             if (result == true)
             {
                 // Save document
                 string filename = dlg.FileName;
                 //get the dimensions of the ink control
                 int width = (int)rajz.ActualWidth;
-                int height = (int)rajz.ActualHeight;
+                int height = (int)rajz.ActualHeight - 20;
                 //render ink to bitmap
                 RenderTargetBitmap rtb = new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
                 rtb.Render(rajz);
-                using (FileStream fs = new FileStream(filename,FileMode.Create))
+                if (dlg.FileName.EndsWith(".gdf"))
                 {
-                    BmpBitmapEncoder encoder = new BmpBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create(rtb));
-                    encoder.Save(fs);
+                    using (FileStream fs = new FileStream(filename, FileMode.Create))
+                    {
+                        rajz.Strokes.Save(fs);
+                        fs.Close();
+                    }
+                }
+                else
+                {
+                    using (FileStream fs = new FileStream(filename, FileMode.Create))
+                    {
+                        JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                        //encoder.ColorContexts()
+                        encoder.Frames.Add(BitmapFrame.Create(rtb));
+                        encoder.Save(fs);
+                    }
                 }
             }
         }
         private void open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
+            ofd.InitialDirectory = Environment.CurrentDirectory + @"\Pictures";
             if (ofd.ShowDialog() == true)
             {
-                rajz.Strokes.Clear();
-                Image i = new Image();
-                i.Source = new BitmapImage(new Uri(ofd.FileName));
-                rajz.Children.Add(i);
+                if (ofd.FileName.EndsWith(".gdf"))
+                {
+                    FileStream fs = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read);
+                    StrokeCollection strokes = new StrokeCollection(fs);
+                    rajz.Strokes = strokes;
+                }
+                else
+                {
+                    MessageBox.Show("Nem nyitható meg a fájl");
+                }
             }
         }
+
+        private void brush_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            rajz.DefaultDrawingAttributes.Height = brush.Value;
+            rajz.DefaultDrawingAttributes.Width = brush.Value;
+        }
+
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             rajz.Strokes.Clear();

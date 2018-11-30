@@ -33,14 +33,14 @@ namespace elso
         {
             MainWindow sw = new MainWindow();
             sw.Show();
-            this.Close();
+            Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             win4 sw = new win4();
             sw.Show();
-            this.Close();
+            Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -48,13 +48,15 @@ namespace elso
            
             MainWindow sw = new MainWindow();
             sw.Show();
-            this.Close();
+            Close();
 
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            
+            Paint pt = new Paint();
+            pt.Show();
+            Close();
         }
     }
 }

@@ -1,26 +1,38 @@
-﻿<Window x:Name="paint" x:Class="GreenDraw.View.Paint"
+﻿<Window x:Name="paint" x:Class="elso.Paint"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GreenDraw"
+        xmlns:local="clr-namespace:elso"
         mc:Ignorable="d"
-        Title="GreenDraw" Height="450" Width="800" SizeChanged="Window_SizeChanged">
+        Title="GreenDraw" Height="450" Width="800" Background="#0D1920" SizeChanged="Window_SizeChanged">
     <Grid>
-        <InkCanvas x:Name="rajz" MouseEnter="rajz_MouseEnter" Cursor="Pen" HorizontalAlignment="Right" VerticalAlignment="Top" Width="692" Height="319"/>
-        <StackPanel Background="Gray" HorizontalAlignment="Left" Width="100" Margin="0,5,100,0" RenderTransformOrigin="0.5,0.5">
-            <Slider x:Name="red" ValueChanged="red_ValueChanged" Background="Red" Maximum="255" SmallChange="1"/>
-            <Slider x:Name="green" ValueChanged="green_ValueChanged" Background="Lime" Maximum="255" SmallChange="1"/>
-            <Slider x:Name="blue" ValueChanged="blue_ValueChanged" Background="Blue" Maximum="255" SmallChange="1"/>
-            <Rectangle x:Name="colorbox" Fill="#000000" Height="70" Stroke="Black" Margin="10,0" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="colorbox_MouseLeftButtonDown"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="20">
+            <Menu Background="#0A5581">
+                <MenuItem Header="_Fájl">
+                    <MenuItem Header="_Megnyitás" Click="open_Click"/>
+                    <MenuItem Header="_Mentés" Click="save_Click"/>
+                    <MenuItem Header="_Kilépés"/>
+                </MenuItem>
+                <MenuItem Header="_Szerkeztés">
+                    <MenuItem Header="_Törlés" Click="Clear_Click"/>
+                </MenuItem>
+            </Menu>
         </StackPanel>
+        <InkCanvas x:Name="rajz" MouseEnter="rajz_MouseEnter" Cursor="Pen" HorizontalAlignment="Right" VerticalAlignment="Top" Width="792" Height="314" Margin="0,20,0,0"/>
 
-        <StackPanel Background="Gray" Orientation="Horizontal" VerticalAlignment="Bottom" Height="100" Margin="100,0,0,0">
-            <Button x:Name="select" Content="Kijelölés" Width="75" Click="select_Click"/>
-            <Button x:Name="edit" Content="Szerkesztés" Width="75" Click="edit_Click"/>
-            <Button x:Name="save" Content="Mentés" Width="75" Click="save_Click"/>
-            <Button x:Name="button" Content="Megnyitás" Width="75" Click="open_Click"/>
-            <Button x:Name="Clear" Content="Törlés" Width="75" Click="Clear_Click"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="80">
+            <StackPanel Orientation="Vertical" Width="100">
+                <Button x:Name="select" Content="Kijelölés" Click="select_Click"/>
+                <Button x:Name="edit" Content="Szerkesztés" Click="edit_Click"/>
+            </StackPanel>
+            <Rectangle x:Name="colorbox" Fill="#000000" Stroke="Black" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="colorbox_MouseLeftButtonDown" Width="80"/>
+            <StackPanel HorizontalAlignment="Left" Width="200" RenderTransformOrigin="0.5,0.5">
+                <Slider x:Name="red" ValueChanged="red_ValueChanged" Background="Red" Maximum="255" SmallChange="1"/>
+                <Slider x:Name="green" ValueChanged="green_ValueChanged" Background="Lime" Maximum="255" SmallChange="1"/>
+                <Slider x:Name="blue" ValueChanged="blue_ValueChanged" Background="Blue" Maximum="255" SmallChange="1"/>
+                <Slider x:Name="brush"  Background="black" Maximum="20" Minimum="1" SmallChange="1" ValueChanged="brush_ValueChanged"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

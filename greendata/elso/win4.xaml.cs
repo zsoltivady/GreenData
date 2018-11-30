@@ -54,19 +54,22 @@ namespace elso
         {
             win3 sw = new win3();
             sw.Show();
-            this.Close();
+            Close();
         }
         private void cmegnyit(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg";
-            Nullable<bool> result = dlg.ShowDialog();
+            bool? result = dlg.ShowDialog();
         }
         private void cmentes(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true) ;
+            if (saveFileDialog.ShowDialog() == true)
+            {
+
+            }
         }
         private void ckilep(object sender, RoutedEventArgs e)
         {
@@ -81,13 +84,13 @@ namespace elso
         {
             MainWindow sw = new MainWindow();
             sw.Show();
-            this.Close();
+            Close();
         }
         private void cregisztal(object sender, RoutedEventArgs e)
         {
             Window1 sw = new Window1();
             sw.Show();
-            this.Close();
+            Close();
         }
         private void cfiokbeall(object sender, RoutedEventArgs e)
         {
@@ -101,7 +104,7 @@ namespace elso
 
             MainWindow sw = new MainWindow();
 
-            this.Close();
+            Close();
 
             sw.Show();
 
