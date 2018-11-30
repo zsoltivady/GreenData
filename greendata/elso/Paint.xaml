@@ -12,7 +12,7 @@
                 <MenuItem Header="_Fájl">
                     <MenuItem Header="_Megnyitás" Click="open_Click"/>
                     <MenuItem Header="_Mentés" Click="save_Click"/>
-                    <MenuItem Header="_Kilépés"/>
+                    <MenuItem Header="_Kilépés" Click="kilep_Click"/>
                 </MenuItem>
                 <MenuItem Header="_Szerkeztés">
                     <MenuItem Header="_Törlés" Click="Clear_Click"/>

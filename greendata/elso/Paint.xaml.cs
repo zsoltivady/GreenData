@@ -108,7 +108,6 @@ namespace elso
                     using (FileStream fs = new FileStream(filename, FileMode.Create))
                     {
                         JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                        //encoder.ColorContexts()
                         encoder.Frames.Add(BitmapFrame.Create(rtb));
                         encoder.Save(fs);
                     }
@@ -138,6 +137,13 @@ namespace elso
         {
             rajz.DefaultDrawingAttributes.Height = brush.Value;
             rajz.DefaultDrawingAttributes.Width = brush.Value;
+        }
+
+        private void kilep_Click(object sender, RoutedEventArgs e)
+        {
+            win3 win3 = new win3();
+            win3.Show();
+            Close();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)

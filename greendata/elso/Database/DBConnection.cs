@@ -10,10 +10,10 @@ namespace elso.Database
 {
    class DBConnection
     {
-        private const String SERVER = "localhost";
-        private const String DATABASE = "kepszerkeszto_db";
-        private const String UID = "root";
-        private const String PASSWORD = "";
+        private const string SERVER = "localhost";
+        private const string DATABASE = "kepszerkeszto_db";
+        private const string UID = "root";
+        private const string PASSWORD = "";
         private static MySqlConnection dbConn;
 
         private DBConnection()
@@ -33,7 +33,7 @@ namespace elso.Database
 
             builder.Database = DATABASE;
 
-            String connString = builder.ToString();
+            string connString = builder.ToString();
 
             builder = null;
 

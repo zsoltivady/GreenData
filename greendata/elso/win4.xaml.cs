@@ -75,10 +75,23 @@ namespace elso
         {
             Close();
         }
+        kepkeres sw = new kepkeres();
         private void ckepkeres(object sender, RoutedEventArgs e)
         {
-            kepkeres sw = new kepkeres();
-            sw.Show();
+            
+            if (sw.IsClosed)
+            {
+                sw = new kepkeres();
+                sw.Show();
+            }
+            if (!sw.IsLoaded)
+            {
+                sw.Show();
+            }
+            else
+            {
+                sw.Focus();
+            }
         }
         private void cbejelentkez(object sender, RoutedEventArgs e)
         {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:elso"
         mc:Ignorable="d"
-        Title="Keresés" Height="124.136" Width="339.091" Background="#0A5581" FontSize="14" WindowStartupLocation="CenterScreen">
+        Title="Keresés" Height="124.136" Width="339.091" Background="#0A5581" FontSize="14" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Border Background="#0D1920" CornerRadius="20" Margin="5">
         <StackPanel>
             <TextBox Width="200" Margin="10"></TextBox>

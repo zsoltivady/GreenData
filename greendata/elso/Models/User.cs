@@ -22,10 +22,10 @@ namespace elso
     class User
     {
 
-        private const String SERVER = "localhost";
-        private const String DATABASE = "kepszerkeszto_db";
-        private const String UID = "root";
-        private const String PASSWORD = "";
+        private const string SERVER = "localhost";
+        private const string DATABASE = "kepszerkeszto_db";
+        private const string UID = "root";
+        private const string PASSWORD = "";
         private static MySqlConnection dbConn = Database.DBConnection.GetdbConn();
 
         public static int Id
@@ -35,29 +35,14 @@ namespace elso
             private set;
         }
 
-        public String Username
+        public string Username
         {
             get;
 
             private set;
         }
 
-        public String Password
-        {
-            get;
-
-
-            private set;
-        }
-
-        public String Email
-        {
-            get;
-
-            private set;
-        }
-
-        public static String LoggedInUsername
+        public string Password
         {
             get;
 
@@ -65,14 +50,29 @@ namespace elso
             private set;
         }
 
-        public static String LoggedInUserID
+        public string Email
         {
             get;
 
             private set;
         }
 
-        private User(int id, String u, String p, String email)
+        public static string LoggedInUsername
+        {
+            get;
+
+
+            private set;
+        }
+
+        public static string LoggedInUserID
+        {
+            get;
+
+            private set;
+        }
+
+        private User(int id, string u, string p, string email)
         {
             Id = id;
             Username = u;
@@ -92,11 +92,11 @@ namespace elso
         // --------------------- find LOGGED IN USER_ID ---------------------
 
 
-        public static String FindLoggedInUserID(String un, String pw)
+        public static string FindLoggedInUserID(string un, string pw)
         {
 
 
-            String query = String.Format("select ID from users where username='" + un + "'and password='" + pw + "'");
+            string query = string.Format("select ID from users where username='" + un + "'and password='" + pw + "'");
 
             MySqlCommand cmd = new MySqlCommand(query,dbConn);
 
@@ -111,7 +111,7 @@ namespace elso
         // --------------------- LOGIN ---------------------
 
 
-        public static bool UserLogin(String un, String pw)
+        public static bool UserLogin(string un, string pw)
         {
             dbConn.Open();
             MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
@@ -146,7 +146,7 @@ namespace elso
 
         public static void SaveImage(object image)
         {
-            String query = String.Format("INSERT INTO images(user_id, image) VALUES ('{0}', '{1}')", LoggedInUserID, image);
+            string query = string.Format("INSERT INTO images(user_id, image) VALUES ('{0}', '{1}')", LoggedInUserID, image);
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
@@ -162,9 +162,9 @@ namespace elso
         // --------------------- DB INSERT ---------------------
 
 
-        public static User Insert(String u, String p, String email)
+        public static User Insert(string u, string p, string email)
         {
-            String query = String.Format("INSERT INTO users(username, password, email) VALUES ('{0}', '{1}', '{2}')", u, p, email);
+            string query = string.Format("INSERT INTO users(username, password, email) VALUES ('{0}', '{1}', '{2}')", u, p, email);
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
@@ -185,9 +185,9 @@ namespace elso
         // --------------------- DB UPDATE ---------------------
 
 
-        public static void Update(String u, String p, String email)
+        public static void Update(string u, string p, string email)
         {
-            String query = String.Format("UPDATE users SET username='{0}', password='{1}', email='{2}', WHERE ID={3}", u, p, email, Id);
+            string query = string.Format("UPDATE users SET username='{0}', password='{1}', email='{2}', WHERE ID={3}", u, p, email, Id);
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 

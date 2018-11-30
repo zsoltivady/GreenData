@@ -23,5 +23,13 @@ namespace elso
         {
             InitializeComponent();
         }
+        public bool IsClosed { get; private set; }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            IsClosed = true;
+        }
     }
+
 }
