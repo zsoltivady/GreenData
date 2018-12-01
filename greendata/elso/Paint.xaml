@@ -5,26 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:elso"
         mc:Ignorable="d"
-        Title="GreenDraw" Height="450" Width="800" Background="#0D1920" SizeChanged="Window_SizeChanged">
+        Title="GreenPaint" Height="450" Width="800" Background="#0D1920" SizeChanged="Window_SizeChanged" Closing="paint_Closing">
     <Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="20">
             <Menu Background="#0A5581">
-                <MenuItem Header="_Fájl">
-                    <MenuItem Header="_Megnyitás" Click="open_Click"/>
-                    <MenuItem Header="_Mentés" Click="save_Click"/>
-                    <MenuItem Header="_Kilépés" Click="kilep_Click"/>
+                <MenuItem Foreground="White" Header="_Fájl">
+                    <MenuItem Foreground="Black" Header="_Megnyitás" Click="open_Click"/>
+                    <MenuItem Foreground="Black" x:Name="save" Header="_Mentés" Click="save_Click"/>
+                    <MenuItem Foreground="Black" Header="_Kilépés" Click="kilep_Click"/>
                 </MenuItem>
-                <MenuItem Header="_Szerkeztés">
-                    <MenuItem Header="_Törlés" Click="Clear_Click"/>
+                <MenuItem Foreground="White" Header="_Szerkeztés">
+                    <MenuItem Foreground="Black" Header="_Törlés" Click="Clear_Click"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <InkCanvas x:Name="rajz" MouseEnter="rajz_MouseEnter" Cursor="Pen" HorizontalAlignment="Right" VerticalAlignment="Top" Width="792" Height="314" Margin="0,20,0,0"/>
-
+        <Grid Margin="0,20,0,0">
+            <InkCanvas x:Name="rajz" MouseEnter="rajz_MouseEnter" Cursor="Pen" HorizontalAlignment="Right" VerticalAlignment="Top" Width="792" Height="314" MouseMove="rajz_MouseMove"/>
+        </Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="80">
             <StackPanel Orientation="Vertical" Width="100">
-                <Button x:Name="select" Content="Kijelölés" Click="select_Click"/>
-                <Button x:Name="edit" Content="Szerkesztés" Click="edit_Click"/>
+                <Button Foreground="White" Background="#0A5581" x:Name="select" Content="Kijelölés" Click="select_Click"/>
+                <Button Foreground="White" Background="#0A5581" x:Name="edit" Content="Szerkesztés" Click="edit_Click"/>
+                <Button Foreground="White" Background="#0A5581" x:Name="undo" Content="Visszavonás" Click="undo_Click"/>
+                <Button Foreground="White" Background="#0A5581" x:Name="erase" Content="Radír" Click="erase_Click"/>
             </StackPanel>
             <Rectangle x:Name="colorbox" Fill="#000000" Stroke="Black" RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="colorbox_MouseLeftButtonDown" Width="80"/>
             <StackPanel HorizontalAlignment="Left" Width="200" RenderTransformOrigin="0.5,0.5">

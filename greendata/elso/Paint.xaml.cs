@@ -55,7 +55,11 @@ namespace elso
 
         private void rajz_MouseEnter(object sender, MouseEventArgs e)
         {
-            rajz.DefaultDrawingAttributes.Color = ok ? colors : Color.FromRgb(piros, zold, kek);
+            if (piros != 255 && zold != 255 && kek != 255)
+            {
+                rajz.DefaultDrawingAttributes.Color = ok ? colors : Color.FromRgb(piros, zold, kek);
+            }
+            
         }
 
         private void select_Click(object sender, RoutedEventArgs e)
@@ -81,6 +85,11 @@ namespace elso
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
+            Save();
+        }
+
+        private void Save()
+        {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Filter = "jpg fájl (.jpg)|*.jpg |png fájl (.png) |*.png |GreenData fájl (.gdf) |*.gdf"; // Filter files by extension
             dlg.InitialDirectory = Environment.CurrentDirectory + @"\Pictures";
@@ -91,7 +100,7 @@ namespace elso
                 string filename = dlg.FileName;
                 //get the dimensions of the ink control
                 int width = (int)rajz.ActualWidth;
-                int height = (int)rajz.ActualHeight - 20;
+                int height = (int)rajz.ActualHeight;
                 //render ink to bitmap
                 RenderTargetBitmap rtb = new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
                 rtb.Render(rajz);
@@ -114,6 +123,7 @@ namespace elso
                 }
             }
         }
+
         private void open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -144,6 +154,57 @@ namespace elso
             win3 win3 = new win3();
             win3.Show();
             Close();
+        }
+
+        private void paint_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            save.Click += save_Click;
+            if (rajz.Strokes.Count > 0)
+            {
+                MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+                MessageBoxResult rsltMessageBox = MessageBox.Show("Mentés nélkül szeretne kilépni?", "GreenData (PAINT)", btnMessageBox, icnMessageBox);
+                switch (rsltMessageBox)
+                {
+                    case MessageBoxResult.Yes:
+                        break;
+                    case MessageBoxResult.No:
+                        Save();
+                        break;
+                    case MessageBoxResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                }
+            }
+        }
+
+        private void undo_Click(object sender, RoutedEventArgs e)
+        {
+            if (rajz.Strokes.Count != 0)
+            {
+                rajz.Strokes.RemoveAt(rajz.Strokes.Count - 1);
+            }
+        }
+        Ellipse ell = new Ellipse();
+        private void rajz_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (rajz.Children.Count != 0)
+            {
+                rajz.Children.RemoveAt(0);
+            }
+            ell.Width = brush.Value;
+            ell.Height = brush.Value;
+            ell.Stroke = new SolidColorBrush(Color.FromRgb(piros, zold, kek));
+            ell.StrokeThickness = 1;
+            Point sensorPoint = Mouse.GetPosition(rajz);
+            ell.SetValue(InkCanvas.LeftProperty, sensorPoint.X - brush.Value / 2);
+            ell.SetValue(InkCanvas.TopProperty, sensorPoint.Y - brush.Value / 2);
+            rajz.Children.Add(ell);
+        }
+
+        private void erase_Click(object sender, RoutedEventArgs e)
+        {
+            rajz.EditingMode = InkCanvasEditingMode.EraseByPoint;
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
