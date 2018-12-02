@@ -11,7 +11,10 @@
             <Menu Background="#0A5581">
                 <MenuItem Foreground="White" Header="_Fájl">
                     <MenuItem Foreground="Black" Header="_Megnyitás" Click="open_Click"/>
-                    <MenuItem Foreground="Black" x:Name="save" Header="_Mentés" Click="save_Click"/>
+                    <MenuItem Foreground="Black" Header="_Mentés">
+                        <MenuItem x:Name="save_project" Header="Projekt mentése" Click="save_Click"/>
+                        <MenuItem x:Name="save_image" Header="Kép mentése" Click="save_Click"/>
+                    </MenuItem>
                     <MenuItem Foreground="Black" Header="_Kilépés" Click="kilep_Click"/>
                 </MenuItem>
                 <MenuItem Foreground="White" Header="_Szerkeztés">
@@ -20,7 +23,7 @@
             </Menu>
         </StackPanel>
         <Grid Margin="0,20,0,0">
-            <InkCanvas x:Name="rajz" MouseEnter="rajz_MouseEnter" Cursor="Pen" HorizontalAlignment="Right" VerticalAlignment="Top" Width="792" Height="314" MouseMove="rajz_MouseMove"/>
+            <InkCanvas x:Name="rajz" MouseEnter="rajz_MouseEnter" Cursor="Pen" HorizontalAlignment="Right" VerticalAlignment="Top" Width="792" Height="314" MouseMove="rajz_MouseMove" MouseLeave="rajz_MouseLeave"/>
         </Grid>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Height="80">
             <StackPanel Orientation="Vertical" Width="100">
