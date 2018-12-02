@@ -33,7 +33,15 @@ namespace elso
             InitializeComponent();
             rajz.UseCustomCursor = true;
             Database.DBConnection.InitializeDB();
-            
+            if (User.LoggedInUsername != null)
+            {
+                Title = "Paint: " + User.LoggedInUsername;
+            }
+            else
+            {
+                Title = "Paint: " + "Vendég";
+            }
+
         }
         private void red_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -114,11 +122,6 @@ namespace elso
                 //get the dimensions of the ink control
                 int width = (int)rajz.ActualWidth;
                 int height = (int)rajz.ActualHeight;
-
-                //render ink to bitmap
-
-
-
                 RenderTargetBitmap rtb = new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
                 rtb.Render(rajz);
                 if (dlg.FileName.EndsWith(".gdf"))
@@ -129,15 +132,6 @@ namespace elso
                         {
                             rajz.Strokes.Save(fs);
                             fs.Close();
-                            if (User.IsLoggedIn()) // DATABASE SAVE
-                            {
-                                MemoryStream ms = new MemoryStream();
-                                rajz.Strokes.Save(ms);
-                                byte[] bytes = ms.ToArray();
-                                rajz.Strokes.Clear();
-                                ms.Dispose();
-                                User.SaveImage(bytes);
-                            }
                             IsSaved = true;
                         }
                     }
@@ -180,7 +174,7 @@ namespace elso
         private void open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.InitialDirectory = Environment.CurrentDirectory + @"\Save\Pictures";
+            ofd.InitialDirectory = Environment.CurrentDirectory + @"\Save\Projekts";
             if (ofd.ShowDialog() == true)
             {
                 if (ofd.FileName.EndsWith(".gdf"))
