@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `kepszerkeszto_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `kepszerkeszto_db`;
 -- MySQL dump 10.13  Distrib 5.7.24, for Win32 (AMD64)
 --
 -- Host: 127.0.0.1    Database: kepszerkeszto_db
@@ -25,13 +23,14 @@ DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `images` (
-  `id` int(250) NOT NULL,
+  `id` int(250) NOT NULL AUTO_INCREMENT,
   `user_id` int(250) NOT NULL,
   `image` mediumblob NOT NULL,
+  `like_count` int(250) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `images_to_users_fk_idx` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-25 13:37:34
+-- Dump completed on 2018-12-02 12:40:01
