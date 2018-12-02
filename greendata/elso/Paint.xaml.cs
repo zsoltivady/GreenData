@@ -152,6 +152,9 @@ namespace elso
                     {
                         using (FileStream fs = new FileStream(filename, FileMode.Create))
                         {
+                            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                            encoder.Frames.Add(BitmapFrame.Create(rtb));
+                            encoder.Save(fs);
                             if (User.IsLoggedIn()) // DATABASE SAVE
                             {
                                 MemoryStream ms = new MemoryStream();
@@ -162,9 +165,7 @@ namespace elso
 
                                 User.SaveImage(bytes);
                             }
-                            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                            encoder.Frames.Add(BitmapFrame.Create(rtb));
-                            encoder.Save(fs);
+                            
                             IsSaved = true;
                         }
                     }
