@@ -68,6 +68,10 @@ namespace elso
 
                     this.Close();
                 }
+                else if (!User.Success)
+                {
+                    MessageBox.Show("Nem sikerült kapcsolódni az adatbázisra!");
+                }
                 else
                 {
                     MessageBox.Show("Hibásan megadott adatok!");
