@@ -65,27 +65,27 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Database\DBConnection.cs" />
-    <Compile Include="kepkeres.xaml.cs">
+    <Compile Include="Kepkereso\kepkeres.xaml.cs">
       <DependentUpon>kepkeres.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
-    <Compile Include="Paint.xaml.cs">
+    <Compile Include="Paint\Paint.xaml.cs">
       <DependentUpon>Paint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="win3.xaml.cs">
+    <Compile Include="Valaszto\win3.xaml.cs">
       <DependentUpon>win3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="win4.xaml.cs">
+    <Compile Include="Kozos\win4.xaml.cs">
       <DependentUpon>win4.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
+    <Compile Include="Regisztracio\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Page Include="kepkeres.xaml">
+    <Page Include="Kepkereso\kepkeres.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Login\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,23 +93,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Login\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Paint.xaml">
+    <Page Include="Paint\Paint.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="win3.xaml">
+    <Page Include="Valaszto\win3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="win4.xaml">
+    <Page Include="Kozos\win4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Window1.xaml">
+    <Page Include="Regisztracio\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

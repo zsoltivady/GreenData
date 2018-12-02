@@ -1,0 +1,78 @@
+﻿<Window x:Class="elso.win4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="A Közös" Height="480" Width="830" WindowStartupLocation="CenterScreen" Background="#0A5581">
+    <StackPanel>
+        <StackPanel>
+            <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.5,0.5" Margin="2,0,0,0" Background="#0A5581">
+                <MenuItem Header="_Fálj" Width="31" Foreground="White">
+                    <MenuItem Header="_Kép hozzáadása" Click="cmegnyit" Name="megnyit" Foreground="Black"/>
+                    <MenuItem Header="_Mentés" Click="cmentes" Name="mentes" Foreground="Black"/>
+                    <Separator />
+                    <MenuItem Header="_Vissza" Click="cvissza" Name="vissza" Foreground="Black"/>
+                    <Separator />
+                    <MenuItem Header="_Kilépés" Click="ckilep" Name="kilep" Foreground="Black"/>
+                </MenuItem>
+                <MenuItem Header="_Böngészés" Foreground="White">
+                    <MenuItem Header="_Kép keresése" Click="ckepkeres" Name="kepkeres" Foreground="Black"/>
+                </MenuItem>
+                <MenuItem Header="_Felhasználó" Foreground="White">
+                    <MenuItem Header="_Bejelentkezés" Click="cbejelentkez" Name="bejelentkez" Foreground="Black"/>
+                    <MenuItem Header="_Regisztráció" Click="cregisztal" Name="regisztal" Foreground="Black"/>
+                    <MenuItem Header="_Fiók beállítások" Click="cfiokbeall" Name="fiokbeall" Foreground="Black"/>
+                    <MenuItem Header="_Kijelentkezés" Click="ckijelent" Name="kijelent" Foreground="Black"/>
+                    <Separator />
+                    <MenuItem Header="_Felhasználók keresése" Click="cfelhasznaloker" Name="felhasznaloker" Foreground="Black"/>
+                    <MenuItem Header="_Elfogadásraváró képek" Click="celfogadasravarokepek" Name="elfogadasravarokepek" Foreground="Black"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Border Background="#0D1920" CornerRadius="20" Margin="20,0,20,0" Height="400">
+            <StackPanel>
+                <StackPanel Width="800" Height="200" Orientation="Horizontal">
+                    <StackPanel Width="250">
+                        <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image1"></Image>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox1">
+                            <CheckBox.Style>
+                                <Style TargetType="{x:Type CheckBox}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="False">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </CheckBox.Style>
+                        </CheckBox>
+                    </StackPanel>
+                    <StackPanel Width="250">
+                        <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image2"></Image>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox2"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Width="250">
+                        <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image3"></Image>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox3"></CheckBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Width="800" Height="200" Orientation="Horizontal">
+                    <StackPanel Width="250">
+                        <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image4"></Image>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox4"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Width="250">
+                        <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image5"></Image>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox5"></CheckBox>
+                    </StackPanel>
+                    <StackPanel Width="250">
+                        <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image6"></Image>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox6"></CheckBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="20" Height="20" Name="Vissza" Margin="5" Content="&lt;"></Button>
+            <Button Width="20" Height="20" Name="Kovetkezo" Margin="5" Content="&gt;"></Button>
+        </StackPanel>
+        <CheckBox Content="CheckBox"/>
+    </StackPanel>
+</Window>
