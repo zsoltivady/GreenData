@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Configuration;
+using System.IO;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -143,9 +145,13 @@ namespace elso
 
         // --------------------- Image Save ---------------------
 
+       
 
-        public static void SaveImage(object image)
+
+        public static void SaveImage(byte[] image)
         {
+            dbConn.Open();
+
             string query = string.Format("INSERT INTO images(user_id, image) VALUES ('{0}', '{1}')", LoggedInUserID, image);
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
@@ -157,6 +163,8 @@ namespace elso
             MessageBox.Show("A Kép sikeresen hozzáadva!");
 
         }
+
+      
 
 
         // --------------------- DB INSERT ---------------------

@@ -31,6 +31,8 @@ namespace elso
         {
             InitializeComponent();
             rajz.UseCustomCursor = true;
+            Database.DBConnection.InitializeDB();
+            
         }
         private void red_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -101,7 +103,11 @@ namespace elso
                 //get the dimensions of the ink control
                 int width = (int)rajz.ActualWidth;
                 int height = (int)rajz.ActualHeight;
+
                 //render ink to bitmap
+
+
+
                 RenderTargetBitmap rtb = new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
                 rtb.Render(rajz);
                 if (dlg.FileName.EndsWith(".gdf"))
@@ -109,7 +115,19 @@ namespace elso
                     using (FileStream fs = new FileStream(filename, FileMode.Create))
                     {
                         rajz.Strokes.Save(fs);
+
                         fs.Close();
+
+                        if (User.IsLoggedIn()) // DATABASE SAVE
+                        {
+                            MemoryStream ms = new MemoryStream();
+                            rajz.Strokes.Save(ms);
+                            byte[] bytes = ms.ToArray();
+                            rajz.Strokes.Clear();
+                            ms.Dispose();
+
+                            User.SaveImage(bytes);  
+                        }
                     }
                 }
                 else
@@ -119,6 +137,24 @@ namespace elso
                         JpegBitmapEncoder encoder = new JpegBitmapEncoder();
                         encoder.Frames.Add(BitmapFrame.Create(rtb));
                         encoder.Save(fs);
+
+                        fs.Close();
+
+                        if (User.IsLoggedIn()) // DATABASE SAVE
+                        {
+                            MemoryStream ms = new MemoryStream();
+                            rajz.Strokes.Save(ms);
+                            byte[] bytes = ms.ToArray();
+                            rajz.Strokes.Clear();
+                            ms.Dispose();
+
+                            User.SaveImage(bytes);
+                        }
+
+                        
+
+                      
+
                     }
                 }
             }
