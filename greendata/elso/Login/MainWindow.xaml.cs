@@ -68,6 +68,10 @@ namespace elso.Login
 
                     this.Close();
                 }
+                else if (!User.Success)
+                {
+                    MessageBox.Show("Nem lehet csatlakozni a szerverhez!");
+                }
                 else
                 {
                     MessageBox.Show("Hibásan megadott adatok!");

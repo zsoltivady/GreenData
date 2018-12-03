@@ -74,6 +74,13 @@ namespace elso
             private set;
         }
 
+        public static bool Success
+        {
+            get;
+
+            private set;
+        }
+
         private User(int id, string u, string p, string email)
         {
             Id = id;
@@ -115,23 +122,38 @@ namespace elso
 
         public static bool UserLogin(string un, string pw)
         {
-            dbConn.Open();
-            MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            MySqlDataAdapter sda = new MySqlDataAdapter("SELECT count(*) FROM users WHERE username='" + un + "'AND password='" + pw + "'", conn);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows[0][0].ToString() == "1")
+            Success = true;
+            try
             {
-                MessageBox.Show("Sikeres Bejelentkezés!");
-
-                LoggedInUsername = un;
-
-                LoggedInUserID =  FindLoggedInUserID(un, pw);
-
-
-                return true;
+                dbConn.Open();
             }
-            else return false;
+            catch (Exception)
+            {
+                Success = false;
+            }
+            if (Success)
+            {
+                MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+                MySqlDataAdapter sda = new MySqlDataAdapter("SELECT count(*) FROM users WHERE username='" + un + "'AND password='" + pw + "'", conn);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows[0][0].ToString() == "1")
+                {
+                    MessageBox.Show("Sikeres Bejelentkezés!");
+
+                    LoggedInUsername = un;
+
+                    LoggedInUserID = FindLoggedInUserID(un, pw);
+
+
+                    return true;
+                }
+                else return false;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // --------------------- LOGOUT ---------------------
