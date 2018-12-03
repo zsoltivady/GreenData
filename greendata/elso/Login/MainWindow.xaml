@@ -7,9 +7,9 @@
             <Label Content="Bejelentkezés" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>
             <Separator></Separator>
             <Label Content="Felhasználónév" Foreground="white"></Label>
-            <TextBox Name="textb1" Background="Gray" Foreground="white"></TextBox>
+            <TextBox Name="textb1" Background="#0d1928" Foreground="White" Cursor="IBeam" CaretBrush="White"></TextBox>
             <Label Content="Jelszó" Foreground="white"></Label>
-            <PasswordBox x:Name="textb3" Background="Gray" Foreground="white"></PasswordBox>
+            <PasswordBox x:Name="textb3" Background="#0d1928" Foreground="white" Cursor="IBeam" CaretBrush="White" ></PasswordBox>
             <Button Content="Belépés" Click="Button_Click_2" Foreground="white" Background="Gray" Margin="10" Height="30"></Button>
             <Button Content="Regisztráció" Click="Button_Click" Foreground="white" Background="Gray" Margin="10" Width="90"></Button>
             <Button Content="Belépés vendégként" Click="Button_Click_1" Foreground="white" Background="Gray" Margin="10" Width="140"></Button>
