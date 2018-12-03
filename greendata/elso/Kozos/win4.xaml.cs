@@ -62,6 +62,7 @@ namespace elso
         }
         private void cmentes(object sender, RoutedEventArgs e)
         {
+            /*
             for (int i = 0; i < length; i++)
             {
                 for (int i = 0; i < length; i++)
@@ -69,7 +70,7 @@ namespace elso
 
                 }
             }
-
+            */
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)

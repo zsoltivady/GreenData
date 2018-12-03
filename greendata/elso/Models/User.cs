@@ -172,11 +172,11 @@ namespace elso
 
         public static User Insert(string u, string p, string email)
         {
-            string query = string.Format("INSERT INTO users(username, password, email) VALUES ('{0}', '{1}', '{2}')", u, p, email);
+            dbConn.Open();
+            string query = string.Format("INSERT INTO users(username, password,  email) VALUES ('{0}', '{1}', '{2}');", u, p, email);
 
-            MySqlCommand cmd = new MySqlCommand(query, dbConn);
-
-
+           MySqlCommand cmd = new MySqlCommand(query, dbConn);
+           
             cmd.ExecuteNonQuery();
 
             int id = (int)cmd.LastInsertedId;
@@ -195,11 +195,13 @@ namespace elso
 
         public static void Update(string u, string p, string email)
         {
+            dbConn.Open();
+
             string query = string.Format("UPDATE users SET username='{0}', password='{1}', email='{2}', WHERE ID={3}", u, p, email, Id);
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
-            dbConn.Open();
+           
 
             cmd.ExecuteNonQuery();
 
