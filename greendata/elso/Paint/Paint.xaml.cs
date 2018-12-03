@@ -247,17 +247,20 @@ namespace elso
             ell.SetValue(InkCanvas.LeftProperty, sensorPoint.X - brush.Value / 2);
             ell.SetValue(InkCanvas.TopProperty, sensorPoint.Y - brush.Value / 2);
             rajz.Children.Add(ell);
-            if (e.RightButton == MouseButtonState.Pressed)
+            if (e.RightButton == MouseButtonState.Pressed && e.LeftButton == MouseButtonState.Pressed)
             {
-                rajz.EditingMode = InkCanvasEditingMode.EraseByPoint;
+                if (rajz.EditingMode != InkCanvasEditingMode.Select)
+                {
+                    rajz.EditingMode = InkCanvasEditingMode.EraseByPoint;
+                    IsSaved = false;
+                }
             }
             else if (e.LeftButton == MouseButtonState.Pressed)
             {
-                IsSaved = false;
-            }
-            else
-            {
-                //rajz.EditingMode = InkCanvasEditingMode.Ink;
+                if (rajz.EditingMode != InkCanvasEditingMode.Select)
+                {
+                    rajz.EditingMode = InkCanvasEditingMode.Ink;
+                }
             }
         }
 
