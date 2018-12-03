@@ -75,8 +75,8 @@
     <Compile Include="Paint\Paint.xaml.cs">
       <DependentUpon>Paint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Valaszto\Choose.xaml.cs">
-      <DependentUpon>Choose.xaml</DependentUpon>
+    <Compile Include="Valaszto\win3.xaml.cs">
+      <DependentUpon>win3.xaml</DependentUpon>
     </Compile>
     <Compile Include="Kozos\win4.xaml.cs">
       <DependentUpon>win4.xaml</DependentUpon>
@@ -104,7 +104,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Valaszto\Choose.xaml">
+    <Page Include="Valaszto\win3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

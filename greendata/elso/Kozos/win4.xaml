@@ -35,12 +35,8 @@
                         <CheckBox HorizontalAlignment="Center" Name="CBox1">
                             <CheckBox.Style>
                                 <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsPressed}" Value="True">
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="False">
                                             <Setter Property="Visibility" Value="Hidden" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -50,114 +46,33 @@
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image2"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox2">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox2"></CheckBox>
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image3"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox3">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox3"></CheckBox>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Width="800" Height="200" Orientation="Horizontal">
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image4"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox4">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox4"></CheckBox>
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image5"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox5">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox5"></CheckBox>
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image6"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox6">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsPressed}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox6"></CheckBox>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </Border>
-        <StackPanel Orientation="Horizontal">
-            <Button Width="20" Height="20" Name="Vissza" Margin="390,0,0,0" Content="&lt;"></Button>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="20" Height="20" Name="Vissza" Margin="5" Content="&lt;"></Button>
             <Button Width="20" Height="20" Name="Kovetkezo" Margin="5" Content="&gt;"></Button>
-            <Button Width="50" Height="20" Margin="310,0,0,0" Name="cMentesBtn" Content="Mentés" Click="cMentesBtn_Click">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Visibility" Value="Hidden"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
-                                <Setter Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
         </StackPanel>
+        <CheckBox Content="CheckBox"/>
     </StackPanel>
 </Window>
