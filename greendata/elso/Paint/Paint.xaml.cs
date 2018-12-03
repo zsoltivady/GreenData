@@ -257,7 +257,7 @@ namespace elso
             }
             else
             {
-                rajz.EditingMode = InkCanvasEditingMode.Ink;
+                //rajz.EditingMode = InkCanvasEditingMode.Ink;
             }
         }
 
