@@ -24,6 +24,7 @@ namespace elso
     /// </summary>
     public partial class Paint : Window
     {
+        public bool IsSaved;
         public bool ok;
         public Color colors;
         public byte piros, zold, kek = 0;
@@ -95,14 +96,24 @@ namespace elso
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            Save();
+            MenuItem menu;
+            menu = sender as MenuItem;
+            if (menu.Header.ToString() == "Kép mentése")
+            {
+                Save("jpg fájl (.jpg)|*.jpg |png fájl (.png) |*.png", @"\Save\Pictures");
+            }
+            else if (menu.Header.ToString() == "Projekt mentése")
+            {
+                Save("GreenData fájl (.gdf) |*.gdf", @"\Save\Projekts");
+            }
+            
         }
 
-        private void Save()
+        private void Save(string filter, string path)
         {
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "jpg fájl (.jpg)|*.jpg |png fájl (.png) |*.png |GreenData fájl (.gdf) |*.gdf"; // Filter files by extension
-            dlg.InitialDirectory = Environment.CurrentDirectory + @"\Pictures";
+            dlg.Filter = filter; // Filter files by extension
+            dlg.InitialDirectory = Environment.CurrentDirectory + path;
             bool? result = dlg.ShowDialog();
             if (result == true)
             {
@@ -115,17 +126,24 @@ namespace elso
                 rtb.Render(rajz);
                 if (dlg.FileName.EndsWith(".gdf"))
                 {
-                    using (FileStream fs = new FileStream(filename, FileMode.Create))
+                    if (filename.StartsWith(Environment.CurrentDirectory + @"\Save\Projekts"))
                     {
-                        rajz.Strokes.Save(fs);
-                        fs.Close();
+                        using (FileStream fs = new FileStream(filename, FileMode.Create))
+                        {
+                            rajz.Strokes.Save(fs);
+                            fs.Close();
+                            IsSaved = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nem mentheted ide a fájlt!");
                     }
                 }
                 else
                 {
-                    using (FileStream fs = new FileStream(filename, FileMode.Create))
+                    if (filename.StartsWith(Environment.CurrentDirectory + @"\Save\Pictures"))
                     {
-<<<<<<< HEAD:greendata/elso/Paint/Paint.xaml.cs
                         using (FileStream fs = new FileStream(filename, FileMode.Create))
                         {
                             JpegBitmapEncoder encoder = new JpegBitmapEncoder();
@@ -148,11 +166,6 @@ namespace elso
                     else
                     {
                         MessageBox.Show("Nem mentheted ide a fájlt!");
-=======
-                        JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                        encoder.Frames.Add(BitmapFrame.Create(rtb));
-                        encoder.Save(fs);
->>>>>>> parent of adb84dc... Paint újítások:greendata/elso/Paint.xaml.cs
                     }
                 }
             }
@@ -161,11 +174,7 @@ namespace elso
         private void open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-<<<<<<< HEAD:greendata/elso/Paint/Paint.xaml.cs
             ofd.InitialDirectory = Environment.CurrentDirectory + @"\Save\Projekts";
-=======
-            ofd.InitialDirectory = Environment.CurrentDirectory + @"\Pictures";
->>>>>>> parent of adb84dc... Paint újítások:greendata/elso/Paint.xaml.cs
             if (ofd.ShowDialog() == true)
             {
                 if (ofd.FileName.EndsWith(".gdf"))
@@ -196,18 +205,20 @@ namespace elso
 
         private void paint_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            save.Click += save_Click;
-            if (rajz.Strokes.Count > 0)
+            if (rajz.Strokes.Count > 0 && IsSaved == false)
             {
+                win3 win3 = new win3();
                 MessageBoxButton btnMessageBox = MessageBoxButton.YesNoCancel;
                 MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
-                MessageBoxResult rsltMessageBox = MessageBox.Show("Mentés nélkül szeretne kilépni?", "GreenData (PAINT)", btnMessageBox, icnMessageBox);
+                MessageBoxResult rsltMessageBox = MessageBox.Show("Szeretné menteni kilépés elött?", "GreenData (PAINT)", btnMessageBox, icnMessageBox);
                 switch (rsltMessageBox)
                 {
                     case MessageBoxResult.Yes:
+                        Save("jpg fájl (.jpg)|*.jpg |png fájl (.png) |*.png |GreenData fájl (.gdf) |*.gdf", @"\Save");
+                        win3.Show();
                         break;
                     case MessageBoxResult.No:
-                        Save();
+                        win3.Show();
                         break;
                     case MessageBoxResult.Cancel:
                         e.Cancel = true;
@@ -221,15 +232,13 @@ namespace elso
             if (rajz.Strokes.Count != 0)
             {
                 rajz.Strokes.RemoveAt(rajz.Strokes.Count - 1);
+                IsSaved = false;
             }
         }
         Ellipse ell = new Ellipse();
         private void rajz_MouseMove(object sender, MouseEventArgs e)
         {
-            if (rajz.Children.Count != 0)
-            {
-                rajz.Children.RemoveAt(0);
-            }
+            rajz.Children.Remove(ell);
             ell.Width = brush.Value;
             ell.Height = brush.Value;
             ell.Stroke = new SolidColorBrush(Color.FromRgb(piros, zold, kek));
@@ -238,11 +247,28 @@ namespace elso
             ell.SetValue(InkCanvas.LeftProperty, sensorPoint.X - brush.Value / 2);
             ell.SetValue(InkCanvas.TopProperty, sensorPoint.Y - brush.Value / 2);
             rajz.Children.Add(ell);
+            if (e.RightButton == MouseButtonState.Pressed)
+            {
+                rajz.EditingMode = InkCanvasEditingMode.EraseByPoint;
+            }
+            else if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                IsSaved = false;
+            }
+            else
+            {
+                rajz.EditingMode = InkCanvasEditingMode.Ink;
+            }
         }
 
         private void erase_Click(object sender, RoutedEventArgs e)
         {
             rajz.EditingMode = InkCanvasEditingMode.EraseByPoint;
+        }
+
+        private void rajz_MouseLeave(object sender, MouseEventArgs e)
+        {
+            rajz.Children.Remove(ell);
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
