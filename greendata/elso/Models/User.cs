@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using System.Data;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.ComponentModel;
 
 namespace elso
 {
@@ -167,26 +168,89 @@ namespace elso
 
         // --------------------- Image Save ---------------------
 
-       
-
 
         public static void SaveImage(byte[] image)
         {
+
+            var userImage = image;
+
             dbConn.Open();
 
-            string query = string.Format("INSERT INTO images(user_id, image) VALUES ('{0}', '{1}')", LoggedInUserID, image);
+            var command = new MySqlCommand("", dbConn);
 
-            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            command.CommandText = "INSERT INTO images(user_id, image) VALUES(@user_id, @image);";
 
-            cmd.ExecuteNonQuery();
+            var paramUserImage = new MySqlParameter("@image", MySqlDbType.Blob, userImage.Length);
+            var paramUserId = new MySqlParameter("@user_id", MySqlDbType.VarChar, 250);
+
+            paramUserImage.Value = userImage;
+            paramUserId.Value = LoggedInUserID;
+
+            command.Parameters.Add(paramUserImage);
+            command.Parameters.Add(paramUserId);
+
+            command.ExecuteNonQuery();
 
             dbConn.Close();
 
-            MessageBox.Show("A Kép sikeresen hozzáadva!");
-
         }
 
-      
+
+
+        // --------------------- Load Image ---------------------
+
+        public static int i = 0;
+
+        public static BitmapImage LoadImage(int user_id)
+        {
+
+            dbConn.Open();
+
+
+            string query = string.Format("SELECT image from images WHERE user_id={0}", user_id );
+
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+
+            MySqlDataReader test;
+
+
+            test = cmd.ExecuteReader();
+
+            byte[] bytes = null;
+
+            BitmapImage image = null;
+
+
+           while(test.Read())
+            {
+                bytes = (byte[])test[0];
+
+                image = null;
+
+
+                MemoryStream stream = new MemoryStream(bytes);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+                image = new BitmapImage();
+                image.BeginInit();
+                MemoryStream ms = new MemoryStream();
+                ms.Seek(0, SeekOrigin.Begin);
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                image.StreamSource = ms;
+                image.StreamSource.Seek(0, SeekOrigin.Begin);
+                image.EndInit();
+
+                stream.Close();
+                stream.Dispose();
+
+                dbConn.Close();
+                return image;
+            }
+
+            return image;
+        }
+        
 
 
         // --------------------- DB INSERT ---------------------

@@ -124,6 +124,9 @@ namespace elso
                 int height = (int)rajz.ActualHeight;
                 RenderTargetBitmap rtb = new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
                 rtb.Render(rajz);
+
+
+
                 if (dlg.FileName.EndsWith(".gdf"))
                 {
                     if (filename.StartsWith(Environment.CurrentDirectory + @"\Save\Projekts"))
@@ -150,15 +153,12 @@ namespace elso
                             encoder.Frames.Add(BitmapFrame.Create(rtb));
                             encoder.Save(fs);
                             if (User.IsLoggedIn()) // DATABASE SAVE
-                            {
-                                MemoryStream ms = new MemoryStream();
-                                rajz.Strokes.Save(ms);
-                                byte[] bytes = ms.ToArray();
-                                rajz.Strokes.Clear();
-                                ms.Dispose();
+                            {                           
 
-                                User.SaveImage(bytes);
+                                User.SaveImage(rajzToBitmapBytes());
                             }
+
+                            
                             
                             IsSaved = true;
                         }
@@ -170,6 +170,27 @@ namespace elso
                 }
             }
         }
+
+        private byte[] rajzToBitmapBytes()
+        {
+            int margin = (int)this.rajz.Margin.Left;
+            int width = (int)this.rajz.ActualWidth - margin;
+            int height = (int)this.rajz.ActualHeight - margin;
+            RenderTargetBitmap rtb =
+            new RenderTargetBitmap(width, height, 96d, 96d, PixelFormats.Default);
+            rtb.Render(rajz);
+            BmpBitmapEncoder encoder = new BmpBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(rtb));
+            byte[] bitmapBytes;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                ms.Position = 0;
+                bitmapBytes = ms.ToArray();
+            }
+            return bitmapBytes;
+        }
+
 
         private void open_Click(object sender, RoutedEventArgs e)
         {

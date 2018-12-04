@@ -41,6 +41,10 @@ namespace elso
                 elfogadasravarokepek.IsEnabled = false;
                 megnyit.IsEnabled = false;
             }
+
+            Image1.Source = User.LoadImage(1);
+            Image2.Source = User.LoadImage(1);
+
         }
         /*  win3 sw = new win3();
             sw.Show();
