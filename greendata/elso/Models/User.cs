@@ -199,15 +199,14 @@ namespace elso
 
         // --------------------- Load Image ---------------------
 
-        public static int i = 0;
 
-        public static BitmapImage LoadImage(int user_id)
+        public static List<byte[]> GetImageList()
         {
 
             dbConn.Open();
 
 
-            string query = string.Format("SELECT image from images WHERE user_id={0}", user_id );
+            string query = string.Format("SELECT image from images ORDER BY created_at DESC");
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
@@ -218,14 +217,96 @@ namespace elso
 
             byte[] bytes = null;
 
-            BitmapImage image = null;
+
+            List<byte[]> images_list = new List<byte[]>();
 
 
            while(test.Read())
             {
-                bytes = (byte[])test[0];
 
-                image = null;
+                for (int i = 0; i < test.FieldCount; i++)
+                {
+                    bytes = (byte[])test[i];
+                }
+
+
+                images_list.Add(bytes);
+                       
+
+            }
+
+
+           
+            return images_list;
+        }
+
+        public static List<byte[]> GetImageListOBLike()
+        {
+
+            dbConn.Open();
+
+
+            string query = string.Format("SELECT image from images ORDER BY like_count DESC");
+
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+
+            MySqlDataReader test;
+
+
+            test = cmd.ExecuteReader();
+
+            byte[] bytes = null;
+
+
+            List<byte[]> images_list = new List<byte[]>();
+
+
+            while (test.Read())
+            {
+
+                for (int i = 0; i < test.FieldCount; i++)
+                {
+                    bytes = (byte[])test[i];
+                }
+
+
+                images_list.Add(bytes);
+
+
+            }
+
+
+
+            return images_list;
+        }
+
+
+        public static int imageCounter = 0;
+
+
+        public static BitmapImage GetImageSource()
+        {
+          
+                BitmapImage image = null;
+
+
+                List<byte[]> images_list = GetImageList();
+
+
+                if (imageCounter == images_list.Count)
+                {
+                imageCounter = 0;
+                }
+                    
+
+
+                byte[] bytes = null;
+
+
+                for (int i = 0; i < images_list.Count; i++)
+                {
+                    bytes = images_list[imageCounter];
+                }
 
 
                 MemoryStream stream = new MemoryStream(bytes);
@@ -245,12 +326,59 @@ namespace elso
                 stream.Dispose();
 
                 dbConn.Close();
+
+                imageCounter++;
+
                 return image;
+        }
+
+        public static BitmapImage GetImageSourceOBLike()
+        {
+
+            BitmapImage image = null;
+
+
+            List<byte[]> images_list = GetImageList();
+
+
+            if (imageCounter == images_list.Count)
+            {
+                imageCounter = 0;
             }
+
+
+
+            byte[] bytes = null;
+
+
+            for (int i = 0; i < images_list.Count; i++)
+            {
+                bytes = images_list[imageCounter];
+            }
+
+
+            MemoryStream stream = new MemoryStream(bytes);
+            stream.Seek(0, SeekOrigin.Begin);
+
+            System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+            image = new BitmapImage();
+            image.BeginInit();
+            MemoryStream ms = new MemoryStream();
+            ms.Seek(0, SeekOrigin.Begin);
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            image.StreamSource = ms;
+            image.StreamSource.Seek(0, SeekOrigin.Begin);
+            image.EndInit();
+
+            stream.Close();
+            stream.Dispose();
+
+            dbConn.Close();
+
+            imageCounter++;
 
             return image;
         }
-        
 
 
         // --------------------- DB INSERT ---------------------

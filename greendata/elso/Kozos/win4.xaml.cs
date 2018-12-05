@@ -42,8 +42,20 @@ namespace elso
                 megnyit.IsEnabled = false;
             }
 
-            Image1.Source = User.LoadImage(1);
-            Image2.Source = User.LoadImage(1);
+
+
+
+            Image1.Source = User.GetImageSource();
+
+            Image2.Source = User.GetImageSource();
+
+            Image3.Source = User.GetImageSource();
+
+            Image4.Source = User.GetImageSource();
+
+            Image5.Source = User.GetImageSource();
+
+            Image6.Source = User.GetImageSource();
 
         }
         /*  win3 sw = new win3();
