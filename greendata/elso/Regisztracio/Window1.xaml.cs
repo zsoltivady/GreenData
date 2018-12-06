@@ -62,40 +62,13 @@ namespace elso
 
         #region ValidationProperties
         private string username;
-        public string UserName
-        {
-            get => username;
-
-            set
-            {
-                username = value;
-                INotifyPropertyChanged("UserName");
-
-            }
-        }
+        public string UserName { get { return username; }  set{ username = value; INotifyPropertyChanged("UserName"); } }
 
         private string email;
-        public string Email
-        {
-            get => email;
-            set
-            {
-                email = value;
-                INotifyPropertyChanged("Email");
-            }
-        }
+        public string Email { get { return email; } set { email = value; INotifyPropertyChanged("Email"); } }
 
-        private string password;
-        public string Password
-        {
-            get => password;
-            set
-            {
-                password = passwd.Password;
-                INotifyPropertyChanged("Password");
-            }
-        }
-
+        
+        public string Password { get { return passwd.Password.ToString(); } }
 
         private void INotifyPropertyChanged(string propertyName)
         {
@@ -131,6 +104,7 @@ namespace elso
         {
             "UserName","Email","Password"
         };
+        
 
         public bool IsValid
         {
@@ -266,27 +240,35 @@ namespace elso
             this.Close();
         }
 
-        byte[] getMd5Hash(string input)
+      string PasswordMD5Crypt(string input)
         {
-           
-            MD5CryptoServiceProvider md5Hasher = new MD5CryptoServiceProvider();
-            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(input));
+            MD5 md5 = MD5.Create();
 
-            return data;
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
+
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+
+            {
+
+                builder.Append(hash[i].ToString("x2"));
+
+            }
+            return builder.ToString();
         }
 
 
         private void Registration_Button(object sender, RoutedEventArgs e)
         {
-            
-
 
             if (ValidateEmailBool() && ValidateUsernameBool() && ValidatePasswordBool())
             {
                 try
                 {
-                   // User.Insert(username, getMd5Hash(passwd.Password).ToString(), email);
-                    User.Insert(username,passwd.Password, email);
+                    User.Insert(username, PasswordMD5Crypt(Password), email);
                     MessageBox.Show("Sikeres Regisztráció!");
                 }
                 catch (Exception error)

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 using System.Data;
 using MySql.Data;
 using MySql.Data.MySqlClient;
@@ -30,7 +31,27 @@ namespace elso.Login
             InitializeComponent();
             Database.DBConnection.InitializeDB();
         }
+        #region Jelszó titosítás
+        private string PasswordMD5Crypt(string input)
+        {
+            MD5 md5 = MD5.Create();
 
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);
+
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+
+            {
+
+                builder.Append(hash[i].ToString("x2"));
+
+            }
+            return builder.ToString();
+        }
+        #endregion
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -49,7 +70,7 @@ namespace elso.Login
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             string un = textb1.Text;
-            string pw = textb3.Password.ToString();
+            string pw = PasswordMD5Crypt(textb3.Password.ToString());
 
             if (string.IsNullOrEmpty(un) || string.IsNullOrEmpty(pw))
             {
@@ -79,11 +100,7 @@ namespace elso.Login
                     textb1.Clear();
                     textb3.Clear();
                 }
-
             }
-
-
-
-        }
+        }  
     }
 }
