@@ -22,8 +22,8 @@
                     <MenuItem Header="_Fiók beállítások" Click="cfiokbeall" Name="fiokbeall" Foreground="Black"/>
                     <MenuItem Header="_Kijelentkezés" Click="ckijelent" Name="kijelent" Foreground="Black"/>
                     <Separator />
-                    <MenuItem Header="_Felhasználók keresése" Click="cfelhasznaloker" Name="felhasznaloker" Foreground="Black"/>
-                    <MenuItem Header="_Elfogadásraváró képek" Click="celfogadasravarokepek" Name="elfogadasravarokepek" Foreground="Black"/>
+                    <MenuItem Header="_Felhasználók keresése" Click="FelhasznaloKereses" Name="felhasznalokereses" Foreground="Black"/>
+                    <MenuItem Header="_Elfogadásraváró képek" Click="ElfogadasraVaroKepek" Name="elfogadasravarokepek" Foreground="Black"/>
                 </MenuItem>
             </Menu>
         </StackPanel>

@@ -68,6 +68,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Database\DBConnection.cs" />
+    <Compile Include="FelhasznaloKereses\FelhasznaloKeresesWindow.xaml.cs">
+      <DependentUpon>FelhasznaloKeresesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kepkereso\kepkeres.xaml.cs">
       <DependentUpon>kepkeres.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
     <Compile Include="Regisztracio\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
+    <Page Include="FelhasznaloKereses\FelhasznaloKeresesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Kepkereso\kepkeres.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -147,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ElfogadasraVaroKepek\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

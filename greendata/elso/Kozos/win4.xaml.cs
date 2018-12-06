@@ -145,13 +145,32 @@ namespace elso
             sw.Show();
 
         }
-        private void celfogadasravarokepek(object sender, RoutedEventArgs e)
+        private void FelhasznaloKereses(object sender, RoutedEventArgs e)
         {
+            if (User.IsLoggedIn())
+            {
+               FelhasznaloKereses userSearch = new FelhasznaloKereses();
+                Close();
+                userSearch.Show();
 
+            }
+            else
+            {
+                MessageBox.Show("Nincs hozzá jogosultságod!");
+            }
         }
-        private void cfelhasznaloker(object sender, RoutedEventArgs e)
-        {
 
+
+        private void ElfogadasraVaroKepek(object sender, RoutedEventArgs e)
+        {
+            if (User.IsLoggedIn())
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Nincs hozzá jogosultságod!");
+            }
         }
     }
 }

@@ -24,13 +24,15 @@ namespace elso
 {
     class User
     {
-
+        #region Sql Server Connection
         private const string SERVER = "localhost";
         private const string DATABASE = "kepszerkeszto_db";
         private const string UID = "root";
         private const string PASSWORD = "";
         private static MySqlConnection dbConn = Database.DBConnection.GetdbConn();
+        #endregion
 
+        #region Properties
         public static int Id
         {
             get;
@@ -81,7 +83,9 @@ namespace elso
 
             private set;
         }
+        #endregion
 
+        #region Private User Constructor
         private User(int id, string u, string p, string email)
         {
             Id = id;
@@ -90,25 +94,26 @@ namespace elso
             Email = email;
         }
 
-        // --------------------- check LOGIN ---------------------
-
+        #endregion
+        // --------------------- Check LOGIN ---------------------
+        #region Check Login
         public static bool IsLoggedIn()
         {
             if (LoggedInUsername == null) return false;
             else return true;
         }
+        #endregion
 
 
-        // --------------------- find LOGGED IN USER_ID ---------------------
-
-
+        // --------------------- Find LOGGED IN USER_ID ---------------------
+        #region Find Logged in User_ID
         public static string FindLoggedInUserID(string un, string pw)
         {
 
 
             string query = string.Format("select ID from users where username='" + un + "'and password='" + pw + "'");
 
-            MySqlCommand cmd = new MySqlCommand(query,dbConn);
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
             string user_id = cmd.ExecuteScalar().ToString();
 
@@ -116,11 +121,10 @@ namespace elso
 
             return user_id;
         }
-
+        #endregion
 
         // --------------------- LOGIN ---------------------
-
-
+        #region User Login
         public static bool UserLogin(string un, string pw)
         {
             Success = true;
@@ -153,22 +157,22 @@ namespace elso
             }
             else
             {
+                dbConn.Close();
                 return false;
             }
         }
+        #endregion
 
         // --------------------- LOGOUT ---------------------
-
-
+        #region LOGOUT
         public static void UserLogout()
         {
             LoggedInUsername = null;
         }
-
+        #endregion
 
         // --------------------- Image Save ---------------------
-
-
+        #region Image Save
         public static void SaveImage(byte[] image)
         {
 
@@ -194,12 +198,12 @@ namespace elso
             dbConn.Close();
 
         }
-
-
+        #endregion
 
         // --------------------- Load Image ---------------------
+        #region Load Image
 
-
+        #region GetImageList
         public static List<byte[]> GetImageList()
         {
 
@@ -221,7 +225,7 @@ namespace elso
             List<byte[]> images_list = new List<byte[]>();
 
 
-           while(test.Read())
+            while (test.Read())
             {
 
                 for (int i = 0; i < test.FieldCount; i++)
@@ -231,15 +235,17 @@ namespace elso
 
 
                 images_list.Add(bytes);
-                       
+
 
             }
 
 
-           
+
             return images_list;
         }
+        #endregion
 
+        #region GetImageListOBLike
         public static List<byte[]> GetImageListOBLike()
         {
 
@@ -279,59 +285,52 @@ namespace elso
 
             return images_list;
         }
+        #endregion
 
-
+        #region GetImageSource
         public static int imageCounter = 0;
-
-
         public static BitmapImage GetImageSource()
         {
-          
-                BitmapImage image = null;
 
-
-                List<byte[]> images_list = GetImageList();
-
-
-                if (imageCounter == images_list.Count)
-                {
+            BitmapImage image = null;
+            List<byte[]> images_list = GetImageList();
+            if (imageCounter == images_list.Count)
+            {
                 imageCounter = 0;
-                }
-                    
+            }
 
+            byte[] bytes = null;
 
-                byte[] bytes = null;
+            for (int i = 0; i < images_list.Count; i++)
+            {
+                bytes = images_list[imageCounter];
+            }
 
+            MemoryStream stream = new MemoryStream(bytes);
+            stream.Seek(0, SeekOrigin.Begin);
 
-                for (int i = 0; i < images_list.Count; i++)
-                {
-                    bytes = images_list[imageCounter];
-                }
+            System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+            image = new BitmapImage();
+            image.BeginInit();
+            MemoryStream ms = new MemoryStream();
+            ms.Seek(0, SeekOrigin.Begin);
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            image.StreamSource = ms;
+            image.StreamSource.Seek(0, SeekOrigin.Begin);
+            image.EndInit();
 
+            stream.Close();
+            stream.Dispose();
 
-                MemoryStream stream = new MemoryStream(bytes);
-                stream.Seek(0, SeekOrigin.Begin);
+            dbConn.Close();
 
-                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
-                image = new BitmapImage();
-                image.BeginInit();
-                MemoryStream ms = new MemoryStream();
-                ms.Seek(0, SeekOrigin.Begin);
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-                image.StreamSource = ms;
-                image.StreamSource.Seek(0, SeekOrigin.Begin);
-                image.EndInit();
+            imageCounter++;
 
-                stream.Close();
-                stream.Dispose();
-
-                dbConn.Close();
-
-                imageCounter++;
-
-                return image;
+            return image;
         }
+        #endregion
 
+        #region GetImageSourceOBLike
         public static BitmapImage GetImageSourceOBLike()
         {
 
@@ -379,18 +378,27 @@ namespace elso
 
             return image;
         }
+        #endregion
+        #endregion
 
+        // --------------------- DB CLOSE ---------------------
+        #region DB CLOSE
+            public static void CloseDB()
+            {
+                dbConn.Close();
+            }
+        #endregion
 
         // --------------------- DB INSERT ---------------------
-
+        #region DB INSERT
 
         public static User Insert(string u, string p, string email)
         {
             dbConn.Open();
             string query = string.Format("INSERT INTO users(username, password,  email) VALUES ('{0}', '{1}', '{2}');", u, p, email);
 
-           MySqlCommand cmd = new MySqlCommand(query, dbConn);
-           
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+
             cmd.ExecuteNonQuery();
 
             int id = (int)cmd.LastInsertedId;
@@ -402,11 +410,10 @@ namespace elso
 
             return user;
         }
-
+        #endregion
 
         // --------------------- DB UPDATE ---------------------
-
-
+        #region DB UPDATE
         public static void Update(string u, string p, string email)
         {
             dbConn.Open();
@@ -415,15 +422,43 @@ namespace elso
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
-           
+
 
             cmd.ExecuteNonQuery();
 
             dbConn.Close();
 
         }
+        #endregion
 
+        // --------------------- SEARCH USER NAME ---------------------
+        #region Search User Name
+        public static string SearchUserName(string felhasznaloNeve)
+        {
+            dbConn.Open();
+            string query = string.Format("select username from users where username='{0}';", felhasznaloNeve);
 
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            var SavedString = (string)cmd.ExecuteScalar();
+            dbConn.Close();
+            return SavedString;
+        }
+        #endregion
+
+        // --------------------- SEARCH USER EMAIL---------------------
+        #region Search User Email
+        public static string SearchUserEmail(string felhasznaloNeve)
+        {
+            dbConn.Open();
+            string query = string.Format("select email from users where username='{0}';", felhasznaloNeve);
+
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            var SavedString = (string)cmd.ExecuteScalar();
+            dbConn.Close();
+            return SavedString;
+        }
+        #endregion
 
     }
 }
+
