@@ -143,15 +143,23 @@ namespace elso
         {
             if (ValidateKeresettnevBool())
             {
-                information_label.Content = "Felhasználónév: " + User.SearchUserName(KeresettNev) + " " + "\nEmail: " + User.SearchUserEmail(KeresettNev);
-                User.CloseDB();
+                if (User.SearchUserName(KeresettNev) != null)
+                {
+                    information_label.Content = "Felhasználónév: " + User.SearchUserName(KeresettNev) + " " + "\nEmail: " + User.SearchUserEmail(KeresettNev);
+                    User.CloseDB();
+                }
+                else
+                {
+                    information_label.Content = "Nincs ilyen nevű felhasználó!";
+                    User.CloseDB();
+                }
+               
             }
             else
             {
                 MessageBox.Show("Baj van főni");
+                User.CloseDB();
             }
         }
-
-        
     }
 }
