@@ -37,7 +37,7 @@
                                 <Style TargetType="{x:Type CheckBox}">
                                     <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="True">
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
@@ -55,7 +55,7 @@
                                 <Style TargetType="{x:Type CheckBox}">
                                     <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="True">
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
@@ -73,7 +73,7 @@
                                 <Style TargetType="{x:Type CheckBox}">
                                     <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="True">
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
@@ -93,7 +93,7 @@
                                 <Style TargetType="{x:Type CheckBox}">
                                     <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="True">
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
@@ -111,7 +111,7 @@
                                 <Style TargetType="{x:Type CheckBox}">
                                     <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="True">
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
@@ -129,7 +129,7 @@
                                 <Style TargetType="{x:Type CheckBox}">
                                     <Setter Property="Visibility" Value="Hidden"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="True">
+                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
                                             <Setter Property="Visibility" Value="Visible" />
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
@@ -151,8 +151,8 @@
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Visibility" Value="Hidden"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=mentes, Path=IsChecked}" Value="True">
-                                <Setter Property="Visibility" Value="Hidden" />
+                            <DataTrigger Binding="{Binding ElementName=mentes, Path=IsPressed}" Value="True">
+                                <Setter Property="Visibility" Value="Visible" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

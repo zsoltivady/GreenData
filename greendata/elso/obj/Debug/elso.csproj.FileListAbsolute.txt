@@ -287,7 +287,6 @@ C:\Users\Knap\Desktop\GreenData\greendata\elso\bin\Debug\elso.exe
 C:\Users\Knap\Desktop\GreenData\greendata\elso\bin\Debug\elso.pdb
 C:\Users\Knap\Desktop\GreenData\greendata\elso\bin\Debug\ColorPickerWPF.dll
 C:\Users\Knap\Desktop\GreenData\greendata\elso\bin\Debug\WriteableBitmapEx.Wpf.dll
-C:\Users\Knap\Desktop\GreenData\greendata\elso\bin\Debug\MySql.Data.xml
 C:\Users\Knap\Desktop\GreenData\greendata\elso\bin\Debug\WriteableBitmapEx.Wpf.pdb
 C:\Users\Knap\Desktop\GreenData\greendata\elso\bin\Debug\WriteableBitmapEx.Wpf.xml
 C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\Kepkereso\kepkeres.baml
@@ -401,3 +400,11 @@ C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\Profil\Profil
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\elso.csprojAssemblyReference.cache
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\PictureViewer.g.cs
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\PictureViewer.baml
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\ElfogadasraVaroKepek\ValidPicture.baml
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\FelhasznaloKereses\FelhasznaloKeresesWindow.baml
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\ElfogadasraVaroKepek\ValidPicture.g.cs
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\FelhasznaloKereses\FelhasznaloKeresesWindow.g.cs
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\PictureViewer.g.cs
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\Profil\Profile.g.cs
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\PictureViewer.baml
+C:\Users\Knap\Desktop\GreenData\greendata\elso\obj\Debug\Profil\Profile.baml

@@ -220,5 +220,10 @@ namespace elso
                 MessageBox.Show("Nincs hozzá jogosultságod!");
             }
         }
+
+        private void cMentesBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
