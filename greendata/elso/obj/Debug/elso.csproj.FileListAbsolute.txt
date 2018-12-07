@@ -399,3 +399,5 @@ C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\elso.pdb
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\Profil\Profile.g.cs
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\Profil\Profile.baml
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\elso.csprojAssemblyReference.cache
+C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\PictureViewer.g.cs
+C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\PictureViewer.baml

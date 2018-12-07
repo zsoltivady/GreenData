@@ -81,6 +81,9 @@
     <Compile Include="Paint\Paint.xaml.cs">
       <DependentUpon>Paint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PictureViewer.xaml.cs">
+      <DependentUpon>PictureViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Profil\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
     <Page Include="Paint\Paint.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PictureViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Profil\Profile.xaml">
       <SubType>Designer</SubType>

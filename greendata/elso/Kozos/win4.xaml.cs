@@ -49,15 +49,69 @@ namespace elso
             ImageIndex.Add(Image4);
             ImageIndex.Add(Image5);
             ImageIndex.Add(Image6);
+            Image1.MouseLeftButtonUp += Image1_MouseLeftButtonUp;
+            Image2.MouseLeftButtonUp += Image2_MouseLeftButtonUp;
+            Image3.MouseLeftButtonUp += Image3_MouseLeftButtonUp;
+            Image4.MouseLeftButtonUp += Image4_MouseLeftButtonUp;
+            Image5.MouseLeftButtonUp += Image5_MouseLeftButtonUp;
+            Image6.MouseLeftButtonUp += Image6_MouseLeftButtonUp;
 
-            
             for (int i = 0; i < ImageIndex.Count; i++)
             {
                 ImageIndex[i].Source = User.GetImageSource();
             }
 
         }
-        
+
+        private void Image1_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        {
+            PictureViewer pv = new PictureViewer();
+            pv.kep.Width = Image1.Width;
+            pv.kep.Height = Image1.Height;
+            pv.Show();
+            pv.kep.Source = Image1.Source;
+        }
+        private void Image2_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        {
+            PictureViewer pv = new PictureViewer();
+            pv.kep.Width = Image2.Width;
+            pv.kep.Height = Image2.Height;
+            pv.Show();
+            pv.kep.Source = Image2.Source;
+        }
+        private void Image3_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        {
+            PictureViewer pv = new PictureViewer();
+            pv.Show();
+            pv.kep.Width = Image3.Width;
+            pv.kep.Height = Image3.Height;
+            pv.kep.Source = Image3.Source;
+        }
+        private void Image4_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        {
+            PictureViewer pv = new PictureViewer();
+            pv.Show();
+            pv.kep.Width = Image4.Width;
+            pv.kep.Height = Image4.Height;
+            pv.kep.Source = Image4.Source;
+        }
+        private void Image5_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        {
+            PictureViewer pv = new PictureViewer();
+            pv.Show();
+            pv.kep.Width = Image5.Width;
+            pv.kep.Height = Image5.Height;
+            pv.kep.Source = Image5.Source;
+        }
+        private void Image6_MouseLeftButtonUp(object sender, MouseEventArgs e)
+        {
+            PictureViewer pv = new PictureViewer();
+            pv.Show();
+            pv.kep.Width = Image6.Width;
+            pv.kep.Height = Image6.Height;
+            pv.kep.Source = Image6.Source;
+        }
+
         /*  win3 sw = new win3();
             sw.Show();
             this.Close();

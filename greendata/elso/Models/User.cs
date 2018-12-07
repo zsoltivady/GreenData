@@ -565,7 +565,7 @@ namespace elso
            
 
         }
-        // --------------------- SEARCH USER NAME ---------------------
+        // --------------------- SEARCH USER Id ---------------------
         #region Search User Id
         public static int SearchUserId(string felhasznaloNeve)
         {
@@ -590,7 +590,6 @@ namespace elso
             return SavedString;
         }
         #endregion
-
         // --------------------- SEARCH USER EMAIL---------------------
         #region Search User Email
         public static string SearchUserEmail(string felhasznaloNeve)
@@ -617,6 +616,7 @@ namespace elso
             return SavedString;
         }
         #endregion
+
         // --------------------- CHANGE USER NAME ---------------------
         #region Change User Name
         public static void ChangeUserName(int userid, string username)
@@ -647,6 +647,11 @@ namespace elso
             string query = string.Format("UPDATE users SET permission = '{0}' WHERE id = '{1}';", userpermission, userid);
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
             cmd.ExecuteNonQuery();
+            Permission = userpermission;
+            if (Permission == "Banned")
+            {
+                UserLogout();
+            }
             dbConn.Close();
         }
         #endregion
