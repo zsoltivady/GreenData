@@ -93,6 +93,10 @@ namespace elso.Login
                 {
                     MessageBox.Show("Nem lehet csatlakozni a szerverhez!");
                 }
+                else if (User.Permission == "Banned")
+                {
+                    MessageBox.Show("Ki vagy tiltva!");
+                }
                 else
                 {
                     MessageBox.Show("Hibásan megadott adatok!");

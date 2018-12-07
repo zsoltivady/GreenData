@@ -167,14 +167,18 @@ namespace elso
                 sda.Fill(dt);
                 if (dt.Rows[0][0].ToString() == "1")
                 {
-                    MessageBox.Show("Sikeres Bejelentkezés!");
-
-                    LoggedInUsername = un;
                     Permission = FindPermission(un, pw);
-                    LoggedInUserID = FindLoggedInUserID(un, pw);
-
-
-                    return true;
+                    if (Permission == "Banned")
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sikeres Bejelentkezés!");
+                        LoggedInUsername = un;
+                        LoggedInUserID = FindLoggedInUserID(un, pw);
+                        return true;
+                    }
                 }
                 else return false;
             }
@@ -555,7 +559,18 @@ namespace elso
            
 
         }
-
+        // --------------------- SEARCH USER NAME ---------------------
+        #region Search User Id
+        public static int SearchUserId(string felhasznaloNeve)
+        {
+            dbConn.Open();
+            string query = string.Format("select id from users where username='{0}';", felhasznaloNeve);
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            int SavedString = (int)cmd.ExecuteScalar();
+            dbConn.Close();
+            return SavedString;
+        }
+        #endregion
         // --------------------- SEARCH USER NAME ---------------------
         #region Search User Name
         public static string SearchUserName(string felhasznaloNeve)
@@ -583,7 +598,7 @@ namespace elso
             return SavedString;
         }
         #endregion
-        // --------------------- SEARCH USER EMAIL---------------------
+        // ------------------ SEARCH USER PERMISSION-------------------
         #region Search User Permission
         public static string SearchUserPermission(string felhasznaloNeve)
         {
@@ -596,6 +611,40 @@ namespace elso
             return SavedString;
         }
         #endregion
+        // --------------------- CHANGE USER NAME ---------------------
+        #region Change User Name
+        public static void ChangeUserName(int userid, string username)
+        {
+            dbConn.Open();
+            string query = string.Format("UPDATE users SET username = '{0}' WHERE id = '{1}';", username, userid);
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+        #endregion
+        // --------------------- CHANGE USER EMAIL --------------------
+        #region Change User Email
+        public static void ChangeUserEmail(int userid, string useremail)
+        {
+            dbConn.Open();
+            string query = string.Format("UPDATE users SET email = '{0}' WHERE id = '{1}';", useremail, userid);
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+        #endregion
+        // ------------------ CHANGE USER PERMISSION ------------------
+        #region Change User Permission
+        public static void ChangeUserPermission(int userid, string userpermission)
+        {
+            dbConn.Open();
+            string query = string.Format("UPDATE users SET permission = '{0}' WHERE id = '{1}';", userpermission, userid);
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+        #endregion
+
     }
 }
 

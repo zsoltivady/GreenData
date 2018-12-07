@@ -166,8 +166,19 @@ namespace elso
 
         private void profile_Click(object sender, RoutedEventArgs e)
         {
-            Profile p = new Profile();
-            p.Show();
+            if (User.Permission != "User")
+            {
+                if (User.SearchUserName(KeresettNev) != null)
+                {
+                    Profile p = new Profile(keresettNev);
+                    p.Show();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Nincs jogod a profiljának a megtekintésére!");
+            }
+            
         }
     }
 }

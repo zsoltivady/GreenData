@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:elso"
         mc:Ignorable="d"
-        Title="Profile" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Profile" Height="236.066" Width="381.246" Background="#0A5581">
+    <Border Background="#0D1920" CornerRadius="20" Margin="20">
+        <Grid>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Width="333">
+                <StackPanel Margin="20,10,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                    <Label Foreground="White" Content="Felhasználónév" />
+                    <TextBox x:Name="felhasznalonev" IsEnabled="False" VerticalAlignment="Center" Background="#0d1928" Foreground="White" Cursor="IBeam" CaretBrush="White" Width="150" />
+                    <Button x:Name="felhasznalomodosit" Foreground="white" Background="Gray" VerticalAlignment="Center" Content="Módosít" Click="felhasznalomodosit_Click" />
+                </StackPanel>
+                <StackPanel Margin="20,10,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                    <Label Foreground="White" Content="Jelszó               " />
+                    <TextBox x:Name="jelszo" IsEnabled="False" VerticalAlignment="Center" Background="#0d1928" Foreground="White" Cursor="IBeam" CaretBrush="White" Width="150" />
+                    <Button x:Name="jelszomodosit" Foreground="white" Background="Gray" VerticalAlignment="Center" Content="Módosít" Click="jelszomodosit_Click" />
+                </StackPanel>
+                <StackPanel Margin="20,10,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                    <Label Foreground="White" Content="Email                " />
+                    <TextBox x:Name="email" IsEnabled="False" VerticalAlignment="Center" Background="#0d1928" Foreground="White" Cursor="IBeam" CaretBrush="White" Width="150" />
+                    <Button x:Name="emailmodosit" Foreground="white" Background="Gray" VerticalAlignment="Center" Content="Módosít" Click="emailmodosit_Click" />
+                </StackPanel>
+                <StackPanel Margin="20,10,0,0" Orientation="Horizontal" VerticalAlignment="Top">
+                    <Label Foreground="White" Content="Jogosultság      " />
+                    <ComboBox Foreground="Green" x:Name="jogosultsag" IsEnabled="False" VerticalAlignment="Center" Width="150">
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Background" Value="#0d1928"/>
+                                <Setter Property="BorderBrush" Value="#1d2938"/>
+                            </Style>
+                        </ComboBox.ItemContainerStyle>
+                        <ComboBoxItem Content="Admin"/>
+                        <ComboBoxItem Content="Moderator"/>
+                        <ComboBoxItem Content="User"/>
+                        <ComboBoxItem Content="Banned"/>
+                    </ComboBox>
+                    <Button x:Name="jogosultsagmodosit" Foreground="white" Background="Gray" VerticalAlignment="Center" Content="Módosít" Click="jogosultsagmodosit_Click" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
