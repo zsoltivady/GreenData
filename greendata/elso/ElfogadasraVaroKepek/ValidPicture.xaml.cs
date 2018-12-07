@@ -16,14 +16,14 @@ using System.IO;
 
 namespace elso
 {
-    //NAGY KÖZÖS
     /// <summary>
-    /// Interaction logic for win4.xaml
+    /// Interaction logic for ValidPicture.xaml
     /// </summary>
-    public partial class win4 : Window
+    public partial class ValidPicture : Window
     {
-        public win4()
+        public ValidPicture()
         {
+            InitializeComponent();
             InitializeComponent();
             if (User.IsLoggedIn()) // BEJELENTKEZETT FELHASZNÁLÓNÁL
             {
@@ -50,18 +50,12 @@ namespace elso
             ImageIndex.Add(Image5);
             ImageIndex.Add(Image6);
 
-            
             for (int i = 0; i < ImageIndex.Count; i++)
             {
-                ImageIndex[i].Source = User.GetImageSource();
+                ImageIndex[i].Source = User.GetImageSourceValidate();
             }
 
         }
-        
-        /*  win3 sw = new win3();
-            sw.Show();
-            this.Close();
-        */
 
         private void cvissza(object sender, RoutedEventArgs e)
         {
@@ -101,7 +95,7 @@ namespace elso
         kepkeres sw = new kepkeres();
         private void ckepkeres(object sender, RoutedEventArgs e)
         {
-            
+
             if (sw.IsClosed)
             {
                 sw = new kepkeres();
@@ -147,9 +141,11 @@ namespace elso
         }
         private void FelhasznaloKereses(object sender, RoutedEventArgs e)
         {
-            FelhasznaloKereses userSearch = new FelhasznaloKereses();
-            Close();
-            userSearch.Show();
+  
+           FelhasznaloKereses userSearch = new FelhasznaloKereses();
+           Close();
+           userSearch.Show();
+  
         }
 
 
@@ -157,8 +153,8 @@ namespace elso
         {
             if (User.IsLoggedIn())
             {
-                ValidPicture vpic = new ValidPicture();
-                vpic.Show();
+                ValidPicture validatepic = new ValidPicture();
+                validatepic.Show();
                 Close();
             }
             else
@@ -166,5 +162,29 @@ namespace elso
                 MessageBox.Show("Nincs hozzá jogosultságod!");
             }
         }
+
+
+        private void Elfogad(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                User.UpdateValidatePicture();
+                MessageBox.Show("Sikeresen elfogadtad a képeket.");
+            }
+            catch (Exception error)
+            {
+                
+                MessageBox.Show(error.ToString());
+            }
+           
+        }
+
+        private void Torol(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Még nincs kész.");
+        }
+
+
+
     }
 }

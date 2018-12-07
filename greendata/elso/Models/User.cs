@@ -209,15 +209,14 @@ namespace elso
 
             dbConn.Open();
 
-
-            string query = string.Format("SELECT image from images ORDER BY created_at DESC");
+            //ha az accepted=1 akkor megjelenik a közösben.
+            string query = string.Format("SELECT image from images where accepted=1 ORDER BY created_at DESC ");
 
             MySqlCommand cmd = new MySqlCommand(query, dbConn);
 
             MySqlDataReader test;
-
-
-            test = cmd.ExecuteReader();
+            
+                        test = cmd.ExecuteReader();
 
             byte[] bytes = null;
 
@@ -245,6 +244,43 @@ namespace elso
         }
         #endregion
 
+        public static List<byte[]> GetImageListValidate()
+        {
+
+            dbConn.Open();
+
+
+            string query = string.Format("SELECT image from images where accepted=0 ORDER BY created_at DESC ");
+
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+
+            MySqlDataReader test;
+
+            test = cmd.ExecuteReader();
+
+            byte[] bytes = null;
+
+
+            List<byte[]> images_list = new List<byte[]>();
+
+
+            while (test.Read())
+            {
+
+                for (int i = 0; i < test.FieldCount; i++)
+                {
+                    bytes = (byte[])test[i];
+                }
+               
+                images_list.Add(bytes);
+
+
+            }
+
+
+
+            return images_list;
+        }
         #region GetImageListOBLike
         public static List<byte[]> GetImageListOBLike()
         {
@@ -329,6 +365,49 @@ namespace elso
             return image;
         }
         #endregion
+
+        public static int imageCounter2 = 0;
+        public static BitmapImage GetImageSourceValidate()
+        {
+
+            BitmapImage image = null;
+            List<byte[]> images_list = GetImageListValidate();
+            if (imageCounter2 == images_list.Count)
+            {
+                imageCounter2 = 0;
+            }
+
+            byte[] bytes = null;
+           
+            
+            for (int i = 0; i < images_list.Count; i++)
+            {
+                bytes = images_list[imageCounter2];
+            }
+
+            //ha nincs mit validálni, errort dob, ugyanis NULL értékű a puffer
+            MemoryStream stream = new MemoryStream(bytes);
+            stream.Seek(0, SeekOrigin.Begin);
+
+            System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+            image = new BitmapImage();
+            image.BeginInit();
+            MemoryStream ms = new MemoryStream();
+            ms.Seek(0, SeekOrigin.Begin);
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            image.StreamSource = ms;
+            image.StreamSource.Seek(0, SeekOrigin.Begin);
+            image.EndInit();
+
+            stream.Close();
+            stream.Dispose();
+
+            dbConn.Close();
+
+            imageCounter2++;
+
+            return image;
+        }
 
         #region GetImageSourceOBLike
         public static BitmapImage GetImageSourceOBLike()
@@ -430,6 +509,29 @@ namespace elso
 
         }
         #endregion
+
+        //update images set accepted=1 where accepted=2;
+
+        // --------------------- Picture Accept UPDATE ---------------------
+        public static void UpdateValidatePicture()
+        {
+            if (IsLoggedIn())
+            {
+                dbConn.Open();
+                string queryId = string.Format("select ID from users where username='{0}';",LoggedInUsername);
+                MySqlCommand cmd = new MySqlCommand(queryId, dbConn);
+                string user_id = cmd.ExecuteScalar().ToString();
+
+                string query = string.Format("update images set accepted=1 where user_id={0};",user_id);
+                MySqlCommand Update_cmd = new MySqlCommand(query, dbConn);
+                Update_cmd.ExecuteNonQuery();
+                dbConn.Close();
+            }
+           
+          
+           
+
+        }
 
         // --------------------- SEARCH USER NAME ---------------------
         #region Search User Name
