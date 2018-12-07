@@ -583,7 +583,19 @@ namespace elso
             return SavedString;
         }
         #endregion
+        // --------------------- SEARCH USER EMAIL---------------------
+        #region Search User Permission
+        public static string SearchUserPermission(string felhasznaloNeve)
+        {
+            dbConn.Open();
+            string query = string.Format("select permission from users where username='{0}';", felhasznaloNeve);
 
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+            var SavedString = (string)cmd.ExecuteScalar();
+            dbConn.Close();
+            return SavedString;
+        }
+        #endregion
     }
 }
 

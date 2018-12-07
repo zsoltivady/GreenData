@@ -145,12 +145,14 @@ namespace elso
             {
                 if (User.SearchUserName(KeresettNev) != null)
                 {
-                    information_label.Content = "Felhasználónév: " + User.SearchUserName(KeresettNev) + " " + "\nEmail: " + User.SearchUserEmail(KeresettNev);
+                    information_label.Content = "Felhasználónév: " + User.SearchUserName(KeresettNev) + " " + "\nEmail: " + User.SearchUserEmail(KeresettNev) + " " + "\nJogosultság: " + User.SearchUserPermission(KeresettNev);
+                    profile.Visibility = Visibility.Visible;
                     User.CloseDB();
                 }
                 else
                 {
                     information_label.Content = "Nincs ilyen nevű felhasználó!";
+                    profile.Visibility = Visibility.Hidden;
                     User.CloseDB();
                 }
                
@@ -160,6 +162,12 @@ namespace elso
                 MessageBox.Show("Baj van főni");
                 User.CloseDB();
             }
+        }
+
+        private void profile_Click(object sender, RoutedEventArgs e)
+        {
+            Profile p = new Profile();
+            p.Show();
         }
     }
 }

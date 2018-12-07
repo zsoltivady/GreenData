@@ -28,10 +28,11 @@
             <!--Search button end-->
 
             <!--Information panel-->
-            <StackPanel VerticalAlignment="Center" Height="141" Margin="0,188,0,0">
-                <Border Background="LightBlue" CornerRadius="20" Margin="10" Height="74">
+            <StackPanel Orientation="Vertical" x:Name="doboz" VerticalAlignment="Center" Height="141" Margin="0,188,0,0">
+                <Border Background="LightBlue" CornerRadius="20" Margin="10" Height="90">
                     <Label x:Name="information_label" Margin="10"/>
                 </Border>
+                <Button x:Name="profile" Visibility="Hidden" Content="Profil" Height="30" Margin="0,0,412,0" Background="Gray" Foreground="White" Click="profile_Click"/>
             </StackPanel>
             <!--Information panel end-->
         </Grid>
