@@ -165,11 +165,13 @@ namespace elso
                 MySqlDataAdapter sda = new MySqlDataAdapter("SELECT count(*) FROM users WHERE username='" + un + "'AND password='" + pw + "'", conn);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
+                Permission = null;
                 if (dt.Rows[0][0].ToString() == "1")
                 {
                     Permission = FindPermission(un, pw);
                     if (Permission == "Banned")
                     {
+                        dbConn.Close();
                         return false;
                     }
                     else
@@ -180,7 +182,11 @@ namespace elso
                         return true;
                     }
                 }
-                else return false;
+                else
+                {
+                    dbConn.Close();
+                    return false;
+                }
             }
             else
             {
