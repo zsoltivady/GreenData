@@ -277,7 +277,6 @@ C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\bin\Debug\elso.exe
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\bin\Debug\elso.pdb
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\bin\Debug\ColorPickerWPF.dll
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\bin\Debug\WriteableBitmapEx.Wpf.dll
-C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\bin\Debug\MySql.Data.xml
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\bin\Debug\WriteableBitmapEx.Wpf.pdb
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\bin\Debug\WriteableBitmapEx.Wpf.xml
 C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\elso.g.resources
@@ -394,3 +393,7 @@ C:\Users\Drumoti\Documents\github\greendata\GreenData\greendata\elso\obj\Debug\F
 C:\Users\Drumoti\Documents\github\greendata\GreenData\greendata\elso\obj\Debug\FelhasznaloKereses\FelhasznaloKeresesWindow.baml
 C:\Users\Drumoti\Documents\github\greendata\GreenData\greendata\elso\obj\Debug\ElfogadasraVaroKepek\ValidPicture.baml
 C:\Users\Drumoti\Documents\github\greendata\GreenData\greendata\elso\obj\Debug\ElfogadasraVaroKepek\ValidPicture.g.cs
+C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\ElfogadasraVaroKepek\ValidPicture.baml
+C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\FelhasznaloKereses\FelhasznaloKeresesWindow.baml
+C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\ElfogadasraVaroKepek\ValidPicture.g.cs
+C:\Users\danco\Documents\GitHub\GreenData\greendata\elso\obj\Debug\FelhasznaloKereses\FelhasznaloKeresesWindow.g.cs

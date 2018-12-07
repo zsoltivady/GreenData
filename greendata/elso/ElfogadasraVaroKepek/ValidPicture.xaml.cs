@@ -24,7 +24,6 @@ namespace elso
         public ValidPicture()
         {
             InitializeComponent();
-            InitializeComponent();
             if (User.IsLoggedIn()) // BEJELENTKEZETT FELHASZNÁLÓNÁL
             {
                 bejelentkez.IsEnabled = false;

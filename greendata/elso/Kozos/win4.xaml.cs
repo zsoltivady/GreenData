@@ -155,7 +155,7 @@ namespace elso
 
         private void ElfogadasraVaroKepek(object sender, RoutedEventArgs e)
         {
-            if (User.IsLoggedIn())
+            if (User.IsLoggedIn() && User.Permission == "Admin")
             {
                 ValidPicture vpic = new ValidPicture();
                 vpic.Show();

@@ -83,15 +83,22 @@ namespace elso
 
             private set;
         }
+        public static string Permission
+        {
+            get;
+
+            private set;
+        }
         #endregion
 
         #region Private User Constructor
-        private User(int id, string u, string p, string email)
+        private User(int id, string u, string p, string email, string perm)
         {
             Id = id;
             Username = u;
             Password = p;
             Email = email;
+            Permission = perm;
         }
 
         #endregion
@@ -122,6 +129,22 @@ namespace elso
             return user_id;
         }
         #endregion
+        // --------------------- Find Permission IN User ---------------------
+        #region Find Permission
+        public static string FindPermission(string un, string pw)
+        {
+
+
+            string query = string.Format("select permission from users where username='" + un + "'and password='" + pw + "'");
+
+            MySqlCommand cmd = new MySqlCommand(query, dbConn);
+
+            string user_permission = cmd.ExecuteScalar().ToString();
+
+            return user_permission;
+        }
+        #endregion
+
 
         // --------------------- LOGIN ---------------------
         #region User Login
@@ -147,7 +170,7 @@ namespace elso
                     MessageBox.Show("Sikeres Bejelentkezés!");
 
                     LoggedInUsername = un;
-
+                    Permission = FindPermission(un, pw);
                     LoggedInUserID = FindLoggedInUserID(un, pw);
 
 
@@ -482,7 +505,7 @@ namespace elso
 
             int id = (int)cmd.LastInsertedId;
 
-            User user = new User(id, u, p, email);
+            User user = new User(id, u, p, email, "User");
 
             dbConn.Close();
 
