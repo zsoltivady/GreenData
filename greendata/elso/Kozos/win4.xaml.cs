@@ -43,12 +43,42 @@ namespace elso
             }
 
             List<Image> ImageIndex = new List<Image>();
-            ImageIndex.Add(Image1);
-            ImageIndex.Add(Image2);
-            ImageIndex.Add(Image3);
-            ImageIndex.Add(Image4);
-            ImageIndex.Add(Image5);
-            ImageIndex.Add(Image6);
+            switch (Picture.GetImageList().Count)
+            {
+                case 6:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    ImageIndex.Add(Image5);
+                    ImageIndex.Add(Image6);
+                    break;
+                case 5:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    ImageIndex.Add(Image5);
+                    break;
+                case 4:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    break;
+                case 3:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    break;
+                case 2:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    break;
+                case 1:
+                    ImageIndex.Add(Image1);
+                    break;
+            }
             Image1.MouseLeftButtonUp += Image1_MouseLeftButtonUp;
             Image2.MouseLeftButtonUp += Image2_MouseLeftButtonUp;
             Image3.MouseLeftButtonUp += Image3_MouseLeftButtonUp;
@@ -58,7 +88,7 @@ namespace elso
 
             for (int i = 0; i < ImageIndex.Count; i++)
             {
-                ImageIndex[i].Source = User.GetImageSource();
+                ImageIndex[i].Source = Picture.GetImageSource();
             }
 
         }

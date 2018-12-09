@@ -154,12 +154,8 @@ namespace elso
                             encoder.Save(fs);
                             if (User.IsLoggedIn()) // DATABASE SAVE
                             {                           
-
-                                User.SaveImage(rajzToBitmapBytes());
+                                Picture.SaveImage(rajzToBitmapBytes());
                             }
-
-                            
-                            
                             IsSaved = true;
                         }
                     }

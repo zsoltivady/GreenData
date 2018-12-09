@@ -77,6 +77,7 @@
     <Compile Include="Kepkereso\kepkeres.xaml.cs">
       <DependentUpon>kepkeres.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Paint\Paint.xaml.cs">
       <DependentUpon>Paint.xaml</DependentUpon>

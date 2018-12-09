@@ -42,16 +42,81 @@ namespace elso
             }
 
             List<Image> ImageIndex = new List<Image>();
-            ImageIndex.Add(Image1);
-            ImageIndex.Add(Image2);
-            ImageIndex.Add(Image3);
-            ImageIndex.Add(Image4);
-            ImageIndex.Add(Image5);
-            ImageIndex.Add(Image6);
-
+            switch (Picture.GetImageListValidate().Count)
+            {
+                case 6:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    ImageIndex.Add(Image5);
+                    ImageIndex.Add(Image6);
+                    CBox1.Visibility = Visibility.Visible;
+                    CBox2.Visibility = Visibility.Visible;
+                    CBox3.Visibility = Visibility.Visible;
+                    CBox4.Visibility = Visibility.Visible;
+                    CBox5.Visibility = Visibility.Visible;
+                    CBox6.Visibility = Visibility.Visible;
+                    break;
+                case 5:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    ImageIndex.Add(Image5);
+                    CBox1.Visibility = Visibility.Visible;
+                    CBox2.Visibility = Visibility.Visible;
+                    CBox3.Visibility = Visibility.Visible;
+                    CBox4.Visibility = Visibility.Visible;
+                    CBox5.Visibility = Visibility.Visible;
+                    CBox6.Visibility = Visibility.Hidden;
+                    break;
+                case 4:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    CBox1.Visibility = Visibility.Visible;
+                    CBox2.Visibility = Visibility.Visible;
+                    CBox3.Visibility = Visibility.Visible;
+                    CBox4.Visibility = Visibility.Visible;
+                    CBox5.Visibility = Visibility.Hidden;
+                    CBox6.Visibility = Visibility.Hidden;
+                    break;
+                case 3:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    CBox1.Visibility = Visibility.Visible;
+                    CBox2.Visibility = Visibility.Visible;
+                    CBox3.Visibility = Visibility.Visible;
+                    CBox4.Visibility = Visibility.Hidden;
+                    CBox5.Visibility = Visibility.Hidden;
+                    CBox6.Visibility = Visibility.Hidden;
+                    break;
+                case 2:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    CBox1.Visibility = Visibility.Visible;
+                    CBox2.Visibility = Visibility.Visible;
+                    CBox3.Visibility = Visibility.Hidden;
+                    CBox4.Visibility = Visibility.Hidden;
+                    CBox5.Visibility = Visibility.Hidden;
+                    CBox6.Visibility = Visibility.Hidden;
+                    break;
+                case 1:
+                    ImageIndex.Add(Image1);
+                    CBox1.Visibility = Visibility.Visible;
+                    CBox2.Visibility = Visibility.Hidden;
+                    CBox3.Visibility = Visibility.Hidden;
+                    CBox4.Visibility = Visibility.Hidden;
+                    CBox5.Visibility = Visibility.Hidden;
+                    CBox6.Visibility = Visibility.Hidden;
+                    break;
+            }
             for (int i = 0; i < ImageIndex.Count; i++)
             {
-                ImageIndex[i].Source = User.GetImageSourceValidate();
+                ImageIndex[i].Source = Picture.GetImageSourceValidate();
             }
 
         }
@@ -167,7 +232,7 @@ namespace elso
         {
             try
             {
-                User.UpdateValidatePicture();
+                Picture.UpdateValidatePicture();
                 MessageBox.Show("Sikeresen elfogadtad a képeket.");
             }
             catch (Exception error)
@@ -183,7 +248,11 @@ namespace elso
             MessageBox.Show("Még nincs kész.");
         }
 
-
-
+        private void kozos(object sender, RoutedEventArgs e)
+        {
+            win4 win4 = new win4();
+            win4.Show();
+            Close();
+        }
     }
 }
