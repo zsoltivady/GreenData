@@ -78,6 +78,14 @@ namespace elso
                 case 1:
                     ImageIndex.Add(Image1);
                     break;
+                default:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    ImageIndex.Add(Image5);
+                    ImageIndex.Add(Image6);
+                    break;
             }
             Image1.MouseLeftButtonUp += Image1_MouseLeftButtonUp;
             Image2.MouseLeftButtonUp += Image2_MouseLeftButtonUp;

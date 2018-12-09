@@ -113,8 +113,30 @@ namespace elso
                     CBox5.Visibility = Visibility.Hidden;
                     CBox6.Visibility = Visibility.Hidden;
                     break;
+                case 0:
+                    CBox1.Visibility = Visibility.Hidden;
+                    CBox2.Visibility = Visibility.Hidden;
+                    CBox3.Visibility = Visibility.Hidden;
+                    CBox4.Visibility = Visibility.Hidden;
+                    CBox5.Visibility = Visibility.Hidden;
+                    CBox6.Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    ImageIndex.Add(Image1);
+                    ImageIndex.Add(Image2);
+                    ImageIndex.Add(Image3);
+                    ImageIndex.Add(Image4);
+                    ImageIndex.Add(Image5);
+                    ImageIndex.Add(Image6);
+                    CBox1.Visibility = Visibility.Visible;
+                    CBox2.Visibility = Visibility.Visible;
+                    CBox3.Visibility = Visibility.Visible;
+                    CBox4.Visibility = Visibility.Visible;
+                    CBox5.Visibility = Visibility.Visible;
+                    CBox6.Visibility = Visibility.Visible;
+                    break;
             }
-            for (int i = 0; i < ImageIndex.Count; i++)
+            for (int i = ImageIndex.Count - 1; i >= 0 ; i--)
             {
                 ImageIndex[i].Source = Picture.GetImageSourceValidate();
             }
@@ -245,7 +267,30 @@ namespace elso
 
         private void Torol(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Még nincs kész.");
+            if (CBox1.IsChecked == true)
+            {
+                Picture.RefuseValidatePicture(Picture.GetImageId(0));
+            }
+            if (CBox2.IsChecked == true)
+            {
+                Picture.RefuseValidatePicture(Picture.GetImageId(1));
+            }
+            if (CBox3.IsChecked == true)
+            {
+                Picture.RefuseValidatePicture(Picture.GetImageId(2));
+            }
+            if (CBox4.IsChecked == true)
+            {
+                Picture.RefuseValidatePicture(Picture.GetImageId(3));
+            }
+            if (CBox5.IsChecked == true)
+            {
+                Picture.RefuseValidatePicture(Picture.GetImageId(4));
+            }
+            if (CBox6.IsChecked == true)
+            {
+                Picture.RefuseValidatePicture(Picture.GetImageId(5));
+            }
         }
 
         private void kozos(object sender, RoutedEventArgs e)

@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace elso
@@ -389,6 +390,37 @@ namespace elso
                 Update_cmd.ExecuteNonQuery();
                 dbConn.Close();
             }
+        }
+        #endregion
+        // -------------------- REFUSE IMAGE --------------------
+        #region Refuse Validate Picture
+        public static void RefuseValidatePicture(int id)
+        {
+            if (User.IsLoggedIn())
+            {
+                dbConn.Open();
+                string query = string.Format("DELETE FROM images WHERE id = {0} ", id);
+                MySqlCommand Refuse_cmd = new MySqlCommand(query, dbConn);
+                Refuse_cmd.ExecuteNonQuery();
+                imageCounter2--;
+                dbConn.Close();
+            }
+        }
+        #endregion
+        // ----------------- GET IMAGE ID -----------------
+        #region Get Image Id
+        public static int GetImageId(int index)
+        {
+            int temp = 0;
+            if (User.IsLoggedIn())
+            {
+                dbConn.Open();
+                string query = string.Format("SELECT id FROM images ORDER BY(id) ASC LIMIT {0}, 1 ", index);
+                MySqlCommand Refuse_cmd = new MySqlCommand(query, dbConn);
+                temp = (int)Refuse_cmd.ExecuteScalar();
+                dbConn.Close();
+            }
+            return temp;
         }
         #endregion
     }
