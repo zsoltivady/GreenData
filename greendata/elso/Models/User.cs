@@ -239,41 +239,45 @@ namespace elso
         #region GetImageList
         public static List<byte[]> GetImageList()
         {
-
-            dbConn.Open();
-
-            //ha az accepted=1 akkor megjelenik a közösben.
-            string query = string.Format("SELECT image from images where accepted=1 ORDER BY created_at DESC ");
-
-            MySqlCommand cmd = new MySqlCommand(query, dbConn);
-
-            MySqlDataReader test;
-            
-                        test = cmd.ExecuteReader();
-
-            byte[] bytes = null;
-
-
-            List<byte[]> images_list = new List<byte[]>();
-
-
-            while (test.Read())
+            if (Success)
             {
+                dbConn.Open();
 
-                for (int i = 0; i < test.FieldCount; i++)
+                //ha az accepted=1 akkor megjelenik a közösben.
+                string query = string.Format("SELECT image from images where accepted=1 ORDER BY created_at DESC ");
+
+                MySqlCommand cmd = new MySqlCommand(query, dbConn);
+
+                MySqlDataReader test;
+
+                test = cmd.ExecuteReader();
+
+                byte[] bytes = null;
+
+
+                List<byte[]> images_list = new List<byte[]>();
+
+
+                while (test.Read())
                 {
-                    bytes = (byte[])test[i];
+
+                    for (int i = 0; i < test.FieldCount; i++)
+                    {
+                        bytes = (byte[])test[i];
+                    }
+
+
+                    images_list.Add(bytes);
+
+
                 }
 
 
-                images_list.Add(bytes);
 
-
+                return images_list;
             }
-
-
-
-            return images_list;
+            return null;
+            
         }
         #endregion
 
@@ -360,42 +364,45 @@ namespace elso
         public static int imageCounter = 0;
         public static BitmapImage GetImageSource()
         {
-
-            BitmapImage image = null;
-            List<byte[]> images_list = GetImageList();
-            if (imageCounter == images_list.Count)
+            if (Success)
             {
-                imageCounter = 0;
+                BitmapImage image = null;
+                List<byte[]> images_list = GetImageList();
+                if (imageCounter == images_list.Count)
+                {
+                    imageCounter = 0;
+                }
+
+                byte[] bytes = null;
+
+                for (int i = 0; i < images_list.Count; i++)
+                {
+                    bytes = images_list[imageCounter];
+                }
+
+                MemoryStream stream = new MemoryStream(bytes);
+                stream.Seek(0, SeekOrigin.Begin);
+
+                System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
+                image = new BitmapImage();
+                image.BeginInit();
+                MemoryStream ms = new MemoryStream();
+                ms.Seek(0, SeekOrigin.Begin);
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                image.StreamSource = ms;
+                image.StreamSource.Seek(0, SeekOrigin.Begin);
+                image.EndInit();
+
+                stream.Close();
+                stream.Dispose();
+
+                dbConn.Close();
+
+                imageCounter++;
+
+                return image;
             }
-
-            byte[] bytes = null;
-
-            for (int i = 0; i < images_list.Count; i++)
-            {
-                bytes = images_list[imageCounter];
-            }
-
-            MemoryStream stream = new MemoryStream(bytes);
-            stream.Seek(0, SeekOrigin.Begin);
-
-            System.Drawing.Image img = System.Drawing.Image.FromStream(stream);
-            image = new BitmapImage();
-            image.BeginInit();
-            MemoryStream ms = new MemoryStream();
-            ms.Seek(0, SeekOrigin.Begin);
-            img.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-            image.StreamSource = ms;
-            image.StreamSource.Seek(0, SeekOrigin.Begin);
-            image.EndInit();
-
-            stream.Close();
-            stream.Dispose();
-
-            dbConn.Close();
-
-            imageCounter++;
-
-            return image;
+            return null;
         }
         #endregion
 
@@ -581,13 +588,17 @@ namespace elso
         #region Search User Name
         public static string SearchUserName(string felhasznaloNeve)
         {
-            dbConn.Open();
-            string query = string.Format("select username from users where username='{0}';", felhasznaloNeve);
+            if (Success)
+            {
+                dbConn.Open();
+                string query = string.Format("select username from users where username='{0}';", felhasznaloNeve);
 
-            MySqlCommand cmd = new MySqlCommand(query, dbConn);
-            var SavedString = (string)cmd.ExecuteScalar();
-            dbConn.Close();
-            return SavedString;
+                MySqlCommand cmd = new MySqlCommand(query, dbConn);
+                var SavedString = (string)cmd.ExecuteScalar();
+                dbConn.Close();
+                return SavedString;
+            }
+            return null;
         }
         #endregion
         // --------------------- SEARCH USER EMAIL---------------------

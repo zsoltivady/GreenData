@@ -120,15 +120,19 @@ namespace elso
 
         private bool ValidateKeresettnevBool()
         {
-            if (String.IsNullOrWhiteSpace(KeresettNev))
+            if (User.Success)
             {
-                return false;
+                if (String.IsNullOrWhiteSpace(KeresettNev))
+                {
+                    return false;
+                }
+                else if (KeresettNev.Length < 3)
+                {
+                    return false;
+                }
+                return true;
             }
-            else if (KeresettNev.Length < 3)
-            {
-                return false;
-            }
-            return true;
+            return false;
         }
 
 
@@ -159,8 +163,15 @@ namespace elso
             }
             else
             {
-                MessageBox.Show("Baj van főni");
-                User.CloseDB();
+                if (User.Success)
+                {
+                    information_label.Content = "Túl rövid a név. Minimum 3 karakter hosszúnak kell lennie";
+                    User.CloseDB();
+                }
+                else
+                {
+                    information_label.Content = "Nem lehet csatlakozni a szerverhez";
+                }
             }
         }
 
