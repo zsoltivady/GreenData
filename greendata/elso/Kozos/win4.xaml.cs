@@ -31,6 +31,7 @@ namespace elso
                 regisztal.IsEnabled = false;
                 fiokbeall.IsEnabled = true;
                 kijelent.IsEnabled = true;
+                GombokNemLathato();
             }
             else // VENDÉG FELHASZNÁLÓNÁL 
             {
@@ -40,6 +41,7 @@ namespace elso
                 kijelent.IsEnabled = false;
                 elfogadasravarokepek.IsEnabled = false;
                 megnyit.IsEnabled = false;
+                GombokNemLathato();
             }
 
             List<Image> ImageIndex = new List<Image>();
@@ -98,8 +100,40 @@ namespace elso
             {
                 ImageIndex[i].Source = Picture.GetImageSource();
             }
-
+            
         }
+        private void GombokNemLathato()
+        {
+            
+            CBox1.Visibility = Visibility.Hidden;
+            CBox2.Visibility = Visibility.Hidden;
+            CBox3.Visibility = Visibility.Hidden;
+            CBox4.Visibility = Visibility.Hidden;
+            CBox5.Visibility = Visibility.Hidden;
+            CBox6.Visibility = Visibility.Hidden;
+            cMentesBtn.Visibility = Visibility.Hidden;
+        }
+        private void GombokLathato()
+        {
+
+            CBox1.Visibility = Visibility.Visible;
+            CBox2.Visibility = Visibility.Visible;
+            CBox3.Visibility = Visibility.Visible;
+            CBox4.Visibility = Visibility.Visible;
+            CBox5.Visibility = Visibility.Visible;
+            CBox6.Visibility = Visibility.Visible;
+            cMentesBtn.Visibility = Visibility.Visible;
+        }
+
+        private void Save(Image Kep, string filePath)
+        {
+
+            var encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create((BitmapSource)Kep.Source));
+            using (FileStream stream = new FileStream(Environment.CurrentDirectory + filePath, FileMode.Create))
+                encoder.Save(stream);
+        }
+
 
         private void Image1_MouseLeftButtonUp(object sender, MouseEventArgs e)
         {
@@ -150,11 +184,6 @@ namespace elso
             pv.kep.Source = Image6.Source;
         }
 
-        /*  win3 sw = new win3();
-            sw.Show();
-            this.Close();
-        */
-
         private void cvissza(object sender, RoutedEventArgs e)
         {
             win3 sw = new win3();
@@ -170,21 +199,7 @@ namespace elso
         }
         private void cmentes(object sender, RoutedEventArgs e)
         {
-            /*
-            for (int i = 0; i < length; i++)
-            {
-                for (int i = 0; i < length; i++)
-                {
-
-                }
-            }
-            */
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == true)
-            {
-
-            }
+            GombokLathato();
         }
         private void ckilep(object sender, RoutedEventArgs e)
         {
@@ -262,6 +277,38 @@ namespace elso
         private void cMentesBtn_Click(object sender, RoutedEventArgs e)
         {
 
+            if (CBox1.IsChecked == true)
+            {
+                Save(Image1, @"\Save\Pictures\kep1.jpg");
+            }
+            if (CBox2.IsChecked == true)
+            {
+                Save(Image2, @"\Save\Pictures\kep2.jpg");
+            }
+            if (CBox3.IsChecked == true)
+            {
+                Save(Image3, @"\Save\Pictures\kep3.jpg");
+            }
+            if (CBox4.IsChecked == true)
+            {
+                Save(Image4, @"\Save\Pictures\kep4.jpg");
+            }
+            if (CBox5.IsChecked == true)
+            {
+                Save(Image5, @"\Save\Pictures\kep5.jpg");
+            }
+            if (CBox6.IsChecked == true)
+            {
+                Save(Image6, @"\Save\Pictures\kep6.jpg");
+            }
+
+            CBox1.IsChecked = false;
+            CBox2.IsChecked = false;
+            CBox3.IsChecked = false;
+            CBox4.IsChecked = false;
+            CBox5.IsChecked = false;
+            CBox6.IsChecked = false;
+            GombokNemLathato();
         }
     }
 }

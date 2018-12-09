@@ -32,113 +32,29 @@
                 <StackPanel Width="800" Height="200" Orientation="Horizontal">
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image1" Height="160"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox1">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox1"></CheckBox>
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image2" Height="160"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox2">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox2"></CheckBox>
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image3" Height="160"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox3">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox3"></CheckBox>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Width="800" Height="200" Orientation="Horizontal">
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image4" Height="160"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox4">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox4"></CheckBox>
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image5" Height="160"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox5">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox5"></CheckBox>
                     </StackPanel>
                     <StackPanel Width="250">
                         <Image MaxWidth="220" MaxHeight="160" Margin="20,20,20,0" Name="Image6" Height="160"></Image>
-                        <CheckBox HorizontalAlignment="Center" Name="CBox6">
-                            <CheckBox.Style>
-                                <Style TargetType="{x:Type CheckBox}">
-                                    <Setter Property="Visibility" Value="Hidden"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=mentes, Path=IsFocused}" Value="True">
-                                            <Setter Property="Visibility" Value="Visible" />
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding ElementName=cMentesBtn, Path=IsChecked}" Value="True">
-                                            <Setter Property="Visibility" Value="Hidden" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-                        </CheckBox>
+                        <CheckBox HorizontalAlignment="Center" Name="CBox6"></CheckBox>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
