@@ -41,53 +41,57 @@ namespace elso
                 kijelent.IsEnabled = false;
                 elfogadasravarokepek.IsEnabled = false;
                 megnyit.IsEnabled = false;
+                felhasznalokereses.IsEnabled = false;
                 GombokNemLathato();
             }
 
             List<Image> ImageIndex = new List<Image>();
-            switch (Picture.GetImageList().Count)
+            if (Picture.GetImageList() != null)
             {
-                case 6:
-                    ImageIndex.Add(Image1);
-                    ImageIndex.Add(Image2);
-                    ImageIndex.Add(Image3);
-                    ImageIndex.Add(Image4);
-                    ImageIndex.Add(Image5);
-                    ImageIndex.Add(Image6);
-                    break;
-                case 5:
-                    ImageIndex.Add(Image1);
-                    ImageIndex.Add(Image2);
-                    ImageIndex.Add(Image3);
-                    ImageIndex.Add(Image4);
-                    ImageIndex.Add(Image5);
-                    break;
-                case 4:
-                    ImageIndex.Add(Image1);
-                    ImageIndex.Add(Image2);
-                    ImageIndex.Add(Image3);
-                    ImageIndex.Add(Image4);
-                    break;
-                case 3:
-                    ImageIndex.Add(Image1);
-                    ImageIndex.Add(Image2);
-                    ImageIndex.Add(Image3);
-                    break;
-                case 2:
-                    ImageIndex.Add(Image1);
-                    ImageIndex.Add(Image2);
-                    break;
-                case 1:
-                    ImageIndex.Add(Image1);
-                    break;
-                default:
-                    ImageIndex.Add(Image1);
-                    ImageIndex.Add(Image2);
-                    ImageIndex.Add(Image3);
-                    ImageIndex.Add(Image4);
-                    ImageIndex.Add(Image5);
-                    ImageIndex.Add(Image6);
-                    break;
+                switch (Picture.GetImageList().Count)
+                {
+                    case 6:
+                        ImageIndex.Add(Image1);
+                        ImageIndex.Add(Image2);
+                        ImageIndex.Add(Image3);
+                        ImageIndex.Add(Image4);
+                        ImageIndex.Add(Image5);
+                        ImageIndex.Add(Image6);
+                        break;
+                    case 5:
+                        ImageIndex.Add(Image1);
+                        ImageIndex.Add(Image2);
+                        ImageIndex.Add(Image3);
+                        ImageIndex.Add(Image4);
+                        ImageIndex.Add(Image5);
+                        break;
+                    case 4:
+                        ImageIndex.Add(Image1);
+                        ImageIndex.Add(Image2);
+                        ImageIndex.Add(Image3);
+                        ImageIndex.Add(Image4);
+                        break;
+                    case 3:
+                        ImageIndex.Add(Image1);
+                        ImageIndex.Add(Image2);
+                        ImageIndex.Add(Image3);
+                        break;
+                    case 2:
+                        ImageIndex.Add(Image1);
+                        ImageIndex.Add(Image2);
+                        break;
+                    case 1:
+                        ImageIndex.Add(Image1);
+                        break;
+                    default:
+                        ImageIndex.Add(Image1);
+                        ImageIndex.Add(Image2);
+                        ImageIndex.Add(Image3);
+                        ImageIndex.Add(Image4);
+                        ImageIndex.Add(Image5);
+                        ImageIndex.Add(Image6);
+                        break;
+                }
             }
             Image1.MouseLeftButtonUp += Image1_MouseLeftButtonUp;
             Image2.MouseLeftButtonUp += Image2_MouseLeftButtonUp;

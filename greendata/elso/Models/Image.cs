@@ -86,7 +86,7 @@ namespace elso
 
             var command = new MySqlCommand("", dbConn);
 
-            command.CommandText = "INSERT INTO images(user_id, image) VALUES(@user_id, @image);";
+            command.CommandText = "INSERT INTO images(user_id, image, accepted) VALUES(@user_id, @image, 0);";
 
             var paramUserImage = new MySqlParameter("@image", MySqlDbType.Blob, userImage.Length);
             var paramUserId = new MySqlParameter("@user_id", MySqlDbType.VarChar, 250);
