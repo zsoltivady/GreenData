@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elso", "elso\elso.csproj", "{98847FFD-8323-497E-A066-EE3BFEAD2AB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elsoTests", "elsoTests\elsoTests.csproj", "{84157942-29CC-46A3-963F-88922EA75454}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{98847FFD-8323-497E-A066-EE3BFEAD2AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98847FFD-8323-497E-A066-EE3BFEAD2AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98847FFD-8323-497E-A066-EE3BFEAD2AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84157942-29CC-46A3-963F-88922EA75454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84157942-29CC-46A3-963F-88922EA75454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84157942-29CC-46A3-963F-88922EA75454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84157942-29CC-46A3-963F-88922EA75454}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

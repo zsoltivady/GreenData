@@ -178,7 +178,7 @@ namespace elso
             return null;
         }
 
-        private bool ValidateEmailBool()
+        public bool ValidateEmailBool()
         {
             if (String.IsNullOrWhiteSpace(Email))
             {
