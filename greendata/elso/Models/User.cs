@@ -22,7 +22,7 @@ using System.ComponentModel;
 
 namespace elso
 {
-    class User
+    public class User
     {
         #region Sql Server Connection
         private const string SERVER = "localhost";
