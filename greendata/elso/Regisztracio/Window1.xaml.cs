@@ -68,7 +68,7 @@ namespace elso
         public string Email { get { return email; } set { email = value; INotifyPropertyChanged("Email"); } }
 
         
-        public string Password { get { return passwd.Password.ToString(); } }
+        public string Password { get { return passwd.Password.ToString(); } set { email = value; INotifyPropertyChanged("Password"); } }
 
         private void INotifyPropertyChanged(string propertyName)
         {
